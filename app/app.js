@@ -1,4 +1,4 @@
-var morningRoutine = angular.module('app', ['ngRoute']);
+var morningRoutine = angular.module('app', ['ngRoute', 'ngTouch', 'ngAnimate']);
 
 morningRoutine.config(['$routeProvider',
   function($routeProvider) {
