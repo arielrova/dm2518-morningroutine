@@ -2,6 +2,14 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend) {
   $scope.user = backend.getUserID();
   //AnvändarID, just nu alltid bara "1" men senare beroende på vem som loggade in.
 
+  $scope.prevPage = function () {
+    console.log('going to prev page');
+  };
+
+  $scope.nextPage = function () {
+    console.log('going to next page');
+  };
+
   $scope.thisDate = backend.getDate();
   //Dagens datum, just nu är idag alltid "20160507" men mer sofistikerad datumhantering följer
 
