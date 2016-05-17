@@ -1,5 +1,9 @@
 morningRoutine.factory('backend', function() {
 
+  var today = new Date();
+  today = today.toLocaleDateString();
+  console.log(today);
+
   var exampleDay = {
     20160506: {
       weatherMorning: { temp: 12, precip: 2 },
