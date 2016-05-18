@@ -1,6 +1,25 @@
 <div class="page" id="day" ng-app="morningRoutine">
   <ng-include src="'partials/navbar/navbar.html'"></ng-include>
   <div ng-controller="dayCtrl" ng-swipe-left="nextPage()" ng-swipe-right="prevPage()">
+    <div id="cloud"><span class='shadow'></span>
+      <div id="raindrop"></div>
+      <div id="raindrop2"></div>
+      <div id="raindrop3"></div>
+      <div id="raindrop4"></div>
+      <div id="raindrop5"></div>
+    </div>
+    <div id="sun"><span class='shadow'></span>
+      <div id="sunray"></div>
+      <div id="sunray2"></div>
+      <div id="sunray3"></div>
+      <div id="sunray4"></div>
+      <div id="sunray5"></div>
+      <div id="sunray6"></div>
+      <div id="sunray7"></div>
+      <div id="sunray8"></div>
+      <div id="sunray9"></div>
+    </div>
+    <p>TEMP MOFASA: {{weather}}</p>
     <h1>Hello! I'm day!</h1>
     <a id="yesterday" class="btn" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Yesterday</a>
     <a id="today" class="btn" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Today</a>

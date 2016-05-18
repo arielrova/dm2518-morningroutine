@@ -1,7 +1,14 @@
-morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend) {
+morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
   $scope.user = backend.getUserID();
   backend.retrieveData();
   //AnvändarID, just nu alltid bara "1" men senare beroende på vem som loggade in.
+
+  // Plock lon och lat från mobilen och inserta här -------------------------------------------->
+  $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/58.59/lon/16.18/data.json")
+    .then(function(response) {
+      $scope.weather = response.data.timeseries[0].t;
+      console.log("yo!" + $scope.weather.t);
+    });
 
   $scope.prevPage = function() {
     console.log('going to prev page');

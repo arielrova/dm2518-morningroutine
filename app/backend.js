@@ -65,6 +65,15 @@ morningRoutine.factory('backend', function() {
     }
   };
 
+  var emptyDay = {
+    lunchBox: false,
+    umbrella: false,
+    leaveTime: {
+      hour: 0,
+      minutes: 0
+    }
+  }
+
   var write = function(lunchbox, umbrella) {
     exampleUserData.lunchBox = lunchbox;
     exampleUserData.umbrella = umbrella;
@@ -126,7 +135,10 @@ morningRoutine.factory('backend', function() {
         if (j == yesterdayString || j == todayString || j == tomorrowString) {
           userData[k].umbrella = days[j].umbrella;
           userData[k].lunchBox = days[j].lunchbox;
-          var k = k + 1;
+          k = k + 1;
+        } else {
+          userData[k].umbrella = false;
+          userData[k].lunchBox = false;
         }
       }
     });
