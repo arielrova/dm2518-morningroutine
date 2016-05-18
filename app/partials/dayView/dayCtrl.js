@@ -11,6 +11,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         $scope.positionLAT = lat.toFixed(2);
         $scope.positionLON = lon.toFixed(2);
         console.log($scope.positionLAT);
+        console.log("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + $scope.positionLAT + "/lon/" + $scope.positionLON + "/data.json");
 
 
         // Plock lon och lat från mobilen och inserta här -------------------------------------------->
