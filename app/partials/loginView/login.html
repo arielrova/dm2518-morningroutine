@@ -1,9 +1,13 @@
 <div class="page" id="stats" ng-app="morningRoutine">
-  <div ng-controller="statsCtrl">
+  <div ng-controller="loginCtrl">
     <h1>This is bullshit login/landing page!</h1>
-    <input type="text" name="" value="" placeholder="Heheh, doesn't matter what you write here, hehe">
-    <input type="text" name="" value="" placeholder="PASSWORD">
-    <a ng-click="login()" href="#day/{{user}}/{{thisDate}}">
+    <select ng-model="user" ng-change="updateUser(user)">
+      <option value="1">BQR</option>
+      <option value="2">Ceder</option>
+      <option value="3">Gustafsson</option>
+      <option value="4">Klint</option>
+    </select>
+    <a href="#day/{{user}}/{{thisDate}}">
       <input type="submit" name="" value="go online!">
     </a>
   </div>

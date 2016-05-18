@@ -1,39 +1,27 @@
 morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
   $scope.user = backend.getUserID();
-  //AnvändarID, just nu alltid bara "1".
+  backend.retrieveData();
+  //AnvändarID, just nu alltid bara "1" men senare beroende på vem som loggade in.
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position){
-      $scope.$apply(function(){
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        $scope.positionLAT = lat.toFixed(2);
-        $scope.positionLON = lon.toFixed(2);
-        console.log($scope.positionLAT);
-
-
-        // Plock lon och lat från mobilen och inserta här -------------------------------------------->
-        $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + $scope.positionLAT + "/lon/" + $scope.positionLON + "/data.json")
-            .then(function(response) {
-              $scope.weather = response.data.timeseries[0].t;
-            });
-      });
+  // Plock lon och lat från mobilen och inserta här -------------------------------------------->
+  $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/58.59/lon/16.18/data.json")
+    .then(function(response) {
+      $scope.weather = response.data.timeseries[0].t;
+      console.log("yo!" + $scope.weather.t);
     });
-  }
 
-  $scope.prevPage = function () {
+  $scope.prevPage = function() {
     console.log('going to prev page');
   };
 
-  $scope.nextPage = function () {
+  $scope.nextPage = function() {
     console.log('going to next page');
   };
 
   $scope.thisDate = backend.getDate();
   //Dagens datum, just nu är idag alltid "20160507" men mer sofistikerad datumhantering följer
 
-  $scope.userData = backend.read($scope.thisDate, $scope.user);
-  console.log($scope.userData);
+  $scope.userData = backend.read($scope.thisDate);
   /* Hämtar userdata för dagens datum och det rätta användarIDt. Returnerar JSON-träd med:
 
   0. Boolean för matlåda. False om den inte är uttagen ur kylen, true om den är uttagen
@@ -50,16 +38,15 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
   $scope.changeDay = function(event) {
     if (event.currentTarget.id == "yesterday") {
-      $scope.thisDate = 20160506;
+      $scope.thisDate = backend.getYesterday();
     } else if (event.currentTarget.id == "today") {
-      $scope.thisDate = 20160507;
+      $scope.thisDate = backend.getDate();
     } else {
-      $scope.thisDate = 20160508;
+      $scope.thisDate = backend.getTomorrow();
     }
     $scope.dayData = backend.getDayData($scope.thisDate);
-    $scope.userData = backend.read($scope.thisDate, $scope.user);
+    $scope.userData = backend.read($scope.thisDate);
     console.log($scope.userData);
-    console.log($scope.dayData);
   };
   /* Det här är bullshitfunktion för att vi ska komma igång med development.
 
