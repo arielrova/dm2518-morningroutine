@@ -1,14 +1,26 @@
 morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
   $scope.user = backend.getUserID();
+  //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
-  //AnvändarID, just nu alltid bara "1" men senare beroende på vem som loggade in.
 
-  // Plock lon och lat från mobilen och inserta här -------------------------------------------->
-  $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/58.59/lon/16.18/data.json")
-    .then(function(response) {
-      $scope.weather = response.data.timeseries[0].t;
-      console.log("yo!" + $scope.weather.t);
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position){
+      $scope.$apply(function(){
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        $scope.positionLAT = lat.toFixed(2);
+        $scope.positionLON = lon.toFixed(2);
+        console.log($scope.positionLAT);
+
+
+        // Plock lon och lat från mobilen och inserta här -------------------------------------------->
+        $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + $scope.positionLAT + "/lon/" + $scope.positionLON + "/data.json")
+            .then(function(response) {
+              $scope.weather = response.data.timeseries[0].t;
+            });
+      });
     });
+  }
 
   $scope.prevPage = function() {
     console.log('going to prev page');

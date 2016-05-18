@@ -527,3 +527,36 @@ body {
         transform: scale(1);;
     }
 }
+
+#nav {
+    display:inline-flex;
+}
+
+header h3 {
+    position: absolute;
+    left:20px;
+}
+
+.burger {
+    width: 30px;
+    height: 30px;
+    color: #000;
+    border-bottom: solid;
+    border-top: solid;
+    border-width: 6px;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    box-sizing: border-box;
+}
+
+.burger:after {
+    content: '';
+    border-bottom: solid;
+    border-width: inherit;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6px;
+}
