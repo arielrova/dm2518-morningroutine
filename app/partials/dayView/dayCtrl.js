@@ -72,4 +72,23 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   // För att skriva till model/backend/data/firebase-pryl, använd backend.write().
   // Säg till vilka fler parametrar ni vill kunna skriva!
 
+  $scope.currentMessage = function() {
+    // Här kan vi skicka olika meddelanden beroende av olika parametrar
+    return "Don't forget your umbrella";
+  }
+
+  $scope.leavingTime = function() {
+    // Skicka ut tiden när användaren ska åka hemifrån
+    return "8:00 AM";
+  }
+
+  $scope.ifLunchbox = function() {
+    var lunch = false;
+    if (lunch == true) {
+      return 'bag.png';
+    } else if (lunch == false) {
+      return 'fridge.png';
+    }
+  }
+
 });

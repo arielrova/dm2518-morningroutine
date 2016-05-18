@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 .page        {
     bottom:0;
     position:absolute;
@@ -21,11 +23,62 @@ header {
 .page-about     { background:#E59400; color:#a55400; }
 .page-contact   { background:#ffa6bb; color:#9e0000; }
 
+.standard-text {
+    font-family: Roboto;
+    color: white;
+}
+
 
 #box {
-    border:1px solid #000;
+    display: flex;
+    /*border:1px solid #000;*/
     min-height:100px;
+    justify-content: center;
 }
+
+.box-child {
+   max-height: 95px;
+   margin: auto; 
+}
+
+.weather {
+    background-color: #039BE5;
+}
+
+.breakfast {
+    background-color: #29B6F6;
+}
+
+.lunch {
+    background-color: #4FC3F7;
+}
+
+.message {
+    background-color: #81D4FA;
+}
+
+.date {
+    background-color: #B3E5FC;
+}
+
+#messagebox {
+    height: 60px;
+    padding: 20px;
+    border-style: dashed;
+    border-color: white;
+}
+
+#messagebox h4 {
+    height: 20px;
+    font-family: Roboto;
+    color: white;
+}
+
+h4 {
+    font-family: Roboto;
+    color: white;
+}
+
 
 /* ANIMATIONS
 ============================================================================= */

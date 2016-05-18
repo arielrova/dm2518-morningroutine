@@ -2,7 +2,7 @@
 <!--  <ng-include src="'partials/navbar/navbar.html'"></ng-include>-->
   <div ng-controller="dayCtrl" ng-swipe-left="nextPage()" ng-swipe-right="prevPage()">
     <div class="container">
-      <div class="row">
+      <div class="row weather">
             <div class="col-xs-6" id="box">
               <div id="weatherWrap">
                 <div id="cloud"><span class='shadow'></span>
@@ -30,30 +30,32 @@
               <span>ShirtStuff</span>
             </div>
       </div>
-      <div class="row">
+      <div class="row breakfast">
         <div class="col-xs-6" id="box">
-          <p>Leave at: value</p>
+          <h4 class="standard-text box-child">Leave at: </br> {{ leavingTime() }}</h4>
         </div>
         <div class="col-xs-6" id="box">
-          <span>PlateStuff?</span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-6" id="box">
-          <p>This is a lunchbox</p>
-        </div>
-        <div class="col-xs-6" id="box">
-          <span>This is a fridge</span>
+          <img src="img/breakfast3.png" class="box-child"></img>
         </div>
       </div>
-      <div class="row">
+      <div class="row lunch">
+        <div class="col-xs-6" id="box">
+          <img src="img/lunchbox.png" class="box-child"></img>
+        </div>
+        <div class="col-xs-6" id="box">
+          <img ng-src="img/{{ifLunchbox()}}" class="box-child"></img>
+        </div>
+      </div>
+      <div class="row message">
         <div class="col-xs-12" id="box">
-          <p>UMBRELLA REMINDER</p>
+          <div id="messagebox" class="box-child">
+            <h4 class="box-child" >{{ currentMessage() }}</h4>
+          </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row date">
         <div class="col-xs-12" id="box">
-          <p>DATE</p>
+          <h4 class="standard-text box-child">{{thisDate}}</h4>
         </div>
       </div>
     </div>
