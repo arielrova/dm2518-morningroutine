@@ -1,0 +1,77 @@
+{
+  "users": {
+    "1": {
+      "name": "BQR",
+      "leaveTime": { "hour": 6, "minutes": 30 },
+      "days": {
+        "20160516": {
+          "lunchbox": true,
+          "umbrella": true
+        },
+        "20160517": {
+          "lunchbox": false,
+          "umbrella": true
+        },
+        "20160518": {
+          "lunchbox": false,
+          "umbrella": false
+        }
+      }
+    },
+    "2": {
+      "name": "Ceder",
+      "leaveTime": { "hour": 7, "minutes": 0 },
+      "days": {
+        "20160516": {
+          "lunchbox": false,
+          "umbrella": true
+        },
+        "20160517": {
+          "lunchbox": true,
+          "umbrella": true
+        },
+        "20160518": {
+          "lunchbox": false,
+          "umbrella": false
+        }
+      }
+    },
+    "3": {
+      "name": "Gustafsson",
+      "leaveTime": { "hour": 7, "minutes": 30 },
+      "days": {
+        "20160516": {
+          "lunchbox": true,
+          "umbrella": false
+        },
+        "20160517": {
+          "lunchbox": false,
+          "umbrella": true
+        },
+        "20160518": {
+          "lunchbox": false,
+          "umbrella": false
+        }
+      }
+    },
+    "4": {
+      "name": "Klint",
+      "leaveTime": { "hour": 10, "minutes": 0 },
+      "days": {
+        "20160516": {
+          "lunchbox": false,
+          "umbrella": false
+        },
+        "20160517": {
+          "lunchbox": true,
+          "umbrella": true
+
+        },
+        "20160518": {
+          "lunchbox": false,
+          "umbrella": false
+        }
+      }
+    }
+  }
+}
