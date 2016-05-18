@@ -5,20 +5,29 @@ morningRoutine.factory('backend', function() {
   var today = new Date();
   var lengthOfDay = 1000 * 60 * 60 * 24; // Milliseconds in a day
 
-  var todayToString = today.toLocaleDateString();
-  var todayString = todayToString.split("-");
-  todayString = todayString[0] + todayString[1] + todayString[2];
+  var todayToString = today.toLocaleString();
+  var todayDay = today.getUTCDate();
+  var todayYear = today.getUTCFullYear();
+  var todayMonth = today.getUTCMonth();
+  todayMonth = "0" + String(todayMonth + 1);
+  //var todayString = todayToString.split("-");
+  var todayString = todayYear + todayMonth + todayDay;
 
   var yesterday = new Date(new Date().getTime() - lengthOfDay);
-  var yesterdayToString = yesterday.toLocaleDateString();
-  var yesterdayString = yesterdayToString.split("-");
-  yesterdayString = yesterdayString[0] + yesterdayString[1] + yesterdayString[2];
+  var yesterdayToString = yesterday.toLocaleString();
+  var yesterdayDay = yesterday.getUTCDate();
+  var yesterdayYear = yesterday.getUTCFullYear();
+  var yesterdayMonth = yesterday.getUTCMonth();
+  yesterdayMonth = "0" + String(yesterdayMonth + 1);
+  var yesterdayString = yesterdayYear + yesterdayMonth + yesterdayDay;
 
   var tomorrow = new Date(new Date().getTime() + lengthOfDay);
-  var tomorrowToString = tomorrow.toLocaleDateString();
-  var tomorrowString = tomorrowToString.split("-");
-  tomorrowString = tomorrowString[0] + tomorrowString[1] + tomorrowString[2];
-  console.log(tomorrowString);
+  var tomorrowToString = tomorrow.toLocaleString();
+  var tomorrowDay = tomorrow.getUTCDate();
+  var tomorrowYear = tomorrow.getUTCFullYear();
+  var tomorrowMonth = tomorrow.getUTCMonth();
+  tomorrowMonth = "0" + String(tomorrowMonth + 1);
+  var tomorrowString = tomorrowYear + tomorrowMonth + tomorrowDay;
 
   var exampleDays = {
     yesterday: {
@@ -122,6 +131,7 @@ morningRoutine.factory('backend', function() {
   var retrieveData = function() {
     firebase.child("users/" + userID + "/leaveTime").on("value", function(snapshot) {
       var leave = snapshot.val();
+      console.log(leave);
       for (var i in userData) {
         userData[i].leaveTime.hour = leave.hour;
         userData[i].leaveTime.minutes = leave.minutes;
