@@ -1,9 +1,10 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 try:
     import simplejson as json
 except:
     import json
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 
 """
 This server sends out a datastream in json format contaning information from our
@@ -29,13 +30,18 @@ sensors: {
    lunchbox: false
 }
 
+right now it works so that if you go to server/sensorname it returns a json
+object saying if it's activated or not
+
 """
 class Sensor(object):
     """docstring for Sensor"""
     def __init__(self, name, pin):
         self.name = name
+        self.status = self.status()
     
-    def status():
+    def status(self):
+        #Checks the pin and returns if it's activated or not
         return True
 
 def setUpSensors():
@@ -47,36 +53,20 @@ def setUpSensors():
 sensors = setUpSensors()
 app = Flask(__name__)
 
-@app.route("/"):
+@app.route("/")
 def index():
     #should not be anything here? maybe raise and error code in the browser 
-    pass
-@app.route("/stream")
-def streamData():
+    return "Data stream is located at /stream"
+@app.route("/"+sensors[0].name+"")
+def umbrella():
     #Here we should send out what data we have
-    def generate():
-        return packageData()
-    return Response(generate())
+    return jsonify(sensor=sensors[0].name,status=sensors[0].status)
 
-def getData(sensors):
-    #Not hooked på to sensors yet so just return something is here
-    rawData = {}
-    for sensor in sensors:
-        rawData[sensor.name] = sensor.status()
-        return rawData
+@app.route("/"+sensors[1].name+"")
+def lunchbox():
+    #Here we should send out what data we have
+    return jsonify(sensor=sensors[1].name,status=sensors[1].status)
 
-def packageData():
-    rawData = getData()
-    data = json.dumps(rawData)
-    return data
-
-def sendData():
-    return formatedData
-
-def main():
-    rawDate = getData()
-    data = packageData(rawData)
-    sendData(data)
 
 if __name__ == '__main__':
     app.run()

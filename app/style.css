@@ -210,12 +210,12 @@ h4 {
 body {
     background: #ccc;
 }
-#cloud {
+
+#raincloud {
     width: 140px; height: 48px;
     margin:auto;
-    display: block;
-
-
+    z-index:10;
+    position: relative;
     background: #f2f9fe;
     background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
     background: -webkit-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
@@ -227,7 +227,7 @@ body {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
 
-    position: relative;
+
     -webkit-transform: scale(0.5);
     -moz-transform: scale(0.5);
     -ms-transform: scale(0.5);
@@ -235,14 +235,16 @@ body {
     transform: scale(0.5);
 }
 
-#cloud:after, #cloud:before {
+#raincloud:after, #raincloud:before {
     content: '';
     position: absolute;
+    z-index: -1;
+
     background: #f2f9fe;
-    z-index: -1
+
 }
 
-#cloud:after {
+#raincloud:after {
     width: 50px; height: 50px;
     top: -30px; left: 70px;
 
@@ -251,7 +253,7 @@ body {
     -moz-border-radius: 100px;
 }
 
-#cloud:before {
+#raincloud:before {
     width: 80px; height: 80px;
     top: -40px; right: 35px;
 
