@@ -15,7 +15,6 @@ header {
 }
 
 .page h1    { font-size:60px; }
-.page a     { margin-top:5px; }
 
 /* PAGES (specific colors for each page)
 ============================================================================= */
@@ -216,6 +215,44 @@ h4{
 body {
     background: #ccc;
 }
+
+#daymenu {
+    display: flex;
+    background-color: lightgrey;
+}
+
+#daymenu a .active-link {
+    background-color: #000;
+}
+
+#today, #tomorrow {
+    border-right:1px solid #c6c6c6;
+    padding:5px;
+    font-size:10px;
+    text-transform: uppercase;
+    flex-grow:1;
+    color:grey;
+}
+
+.row a:active {
+    background-color: #000;
+}
+
+#nextday {
+    padding:5px;
+    font-size:10px;
+    text-transform: uppercase;
+    flex-grow:1;
+    color:grey;
+}
+
+#today:target, #tomorrow:target, #nextday:target {
+    background-color: #000;
+}
+
+/*a:active {
+    text-shadow: 0 0 50px rgb(255, 16, 0);
+}*/
 
 #raincloud {
     width: 140px; height: 48px;
@@ -581,21 +618,16 @@ header h3 {
     height: 30px;
     color: #000;
     border-bottom: solid;
-    border-top: solid;
-    border-width: 6px;
+    border-left: solid;
+    border-width: 2px;
     position: absolute;
     right: 25px;
     top: 20px;
     box-sizing: border-box;
-}
 
-.burger:after {
-    content: '';
-    border-bottom: solid;
-    border-width: inherit;
-    background-color: #000;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 6px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
