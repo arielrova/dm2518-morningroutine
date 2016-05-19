@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fec6fd2f-ad58-4470-a36d-a95a0dc70978" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/backend.js" afterPath="$PROJECT_DIR$/app/backend.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dayView/day.html" afterPath="$PROJECT_DIR$/app/partials/dayView/day.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/dayView/dayCtrl.js" afterPath="$PROJECT_DIR$/app/partials/dayView/dayCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/style.css" afterPath="$PROJECT_DIR$/app/style.css" />
@@ -30,28 +29,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="12.75">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="day.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="day.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/dayView/day.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.738255">
-              <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+            <state vertical-scroll-proportion="-5.2941175">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75">
-              <caret line="430" column="18" selection-start-line="430" selection-start-column="18" selection-end-line="430" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.53797466">
+              <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
               <folding>
                 <element signature="e#1471#2827#0" expanded="false" />
                 <element signature="e#2860#3117#0" expanded="false" />
@@ -61,21 +60,19 @@
                 <element signature="e#4356#4807#0" expanded="false" />
                 <element signature="e#4829#5010#0" expanded="false" />
                 <element signature="e#5031#5227#0" expanded="false" />
-                <element signature="e#6008#6093#0" expanded="false" />
-                <element signature="e#6108#6262#0" expanded="false" />
-                <element signature="e#6443#6706#0" expanded="false" />
-                <element signature="e#6718#6997#0" expanded="false" />
-                <element signature="e#7016#7226#0" expanded="false" />
-                <element signature="e#7239#7545#0" expanded="false" />
-                <element signature="e#7565#7775#0" expanded="false" />
-                <element signature="e#7788#8093#0" expanded="false" />
-                <element signature="e#8113#8323#0" expanded="false" />
-                <element signature="e#8336#8641#0" expanded="false" />
-                <element signature="e#8661#8871#0" expanded="false" />
-                <element signature="e#8884#9209#0" expanded="false" />
-                <element signature="e#9229#9439#0" expanded="false" />
-                <element signature="e#9441#9549#0" expanded="false" />
-                <element signature="e#12400#12977#0" expanded="false" />
+                <element signature="e#6462#6725#0" expanded="false" />
+                <element signature="e#6737#7016#0" expanded="false" />
+                <element signature="e#7035#7245#0" expanded="false" />
+                <element signature="e#7258#7564#0" expanded="false" />
+                <element signature="e#7584#7794#0" expanded="false" />
+                <element signature="e#7807#8112#0" expanded="false" />
+                <element signature="e#8132#8342#0" expanded="false" />
+                <element signature="e#8355#8660#0" expanded="false" />
+                <element signature="e#8680#8890#0" expanded="false" />
+                <element signature="e#8903#9228#0" expanded="false" />
+                <element signature="e#9248#9458#0" expanded="false" />
+                <element signature="e#9460#9568#0" expanded="false" />
+                <element signature="e#12419#12996#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -84,8 +81,8 @@
       <file leaf-file-name="dayCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/dayView/dayCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.444445">
-              <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+            <state vertical-scroll-proportion="-14.444445">
+              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -122,10 +119,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/style.css" />
         <option value="$PROJECT_DIR$/app/backend.js" />
         <option value="$PROJECT_DIR$/app/partials/dayView/dayCtrl.js" />
         <option value="$PROJECT_DIR$/app/partials/dayView/day.html" />
+        <option value="$PROJECT_DIR$/app/style.css" />
       </list>
     </option>
   </component>
@@ -411,21 +408,19 @@
             <element signature="e#4356#4807#0" expanded="false" />
             <element signature="e#4829#5010#0" expanded="false" />
             <element signature="e#5031#5227#0" expanded="false" />
-            <element signature="e#6008#6093#0" expanded="false" />
-            <element signature="e#6108#6262#0" expanded="false" />
-            <element signature="e#6443#6706#0" expanded="false" />
-            <element signature="e#6718#6997#0" expanded="false" />
-            <element signature="e#7016#7226#0" expanded="false" />
-            <element signature="e#7239#7545#0" expanded="false" />
-            <element signature="e#7565#7775#0" expanded="false" />
-            <element signature="e#7788#8093#0" expanded="false" />
-            <element signature="e#8113#8323#0" expanded="false" />
-            <element signature="e#8336#8641#0" expanded="false" />
-            <element signature="e#8661#8871#0" expanded="false" />
-            <element signature="e#8884#9209#0" expanded="false" />
-            <element signature="e#9229#9439#0" expanded="false" />
-            <element signature="e#9441#9549#0" expanded="false" />
-            <element signature="e#12400#12977#0" expanded="false" />
+            <element signature="e#6462#6725#0" expanded="false" />
+            <element signature="e#6737#7016#0" expanded="false" />
+            <element signature="e#7035#7245#0" expanded="false" />
+            <element signature="e#7258#7564#0" expanded="false" />
+            <element signature="e#7584#7794#0" expanded="false" />
+            <element signature="e#7807#8112#0" expanded="false" />
+            <element signature="e#8132#8342#0" expanded="false" />
+            <element signature="e#8355#8660#0" expanded="false" />
+            <element signature="e#8680#8890#0" expanded="false" />
+            <element signature="e#8903#9228#0" expanded="false" />
+            <element signature="e#9248#9458#0" expanded="false" />
+            <element signature="e#9460#9568#0" expanded="false" />
+            <element signature="e#12419#12996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,21 +480,19 @@
             <element signature="e#4356#4807#0" expanded="false" />
             <element signature="e#4829#5010#0" expanded="false" />
             <element signature="e#5031#5227#0" expanded="false" />
-            <element signature="e#6008#6093#0" expanded="false" />
-            <element signature="e#6108#6262#0" expanded="false" />
-            <element signature="e#6443#6706#0" expanded="false" />
-            <element signature="e#6718#6997#0" expanded="false" />
-            <element signature="e#7016#7226#0" expanded="false" />
-            <element signature="e#7239#7545#0" expanded="false" />
-            <element signature="e#7565#7775#0" expanded="false" />
-            <element signature="e#7788#8093#0" expanded="false" />
-            <element signature="e#8113#8323#0" expanded="false" />
-            <element signature="e#8336#8641#0" expanded="false" />
-            <element signature="e#8661#8871#0" expanded="false" />
-            <element signature="e#8884#9209#0" expanded="false" />
-            <element signature="e#9229#9439#0" expanded="false" />
-            <element signature="e#9441#9549#0" expanded="false" />
-            <element signature="e#12400#12977#0" expanded="false" />
+            <element signature="e#6462#6725#0" expanded="false" />
+            <element signature="e#6737#7016#0" expanded="false" />
+            <element signature="e#7035#7245#0" expanded="false" />
+            <element signature="e#7258#7564#0" expanded="false" />
+            <element signature="e#7584#7794#0" expanded="false" />
+            <element signature="e#7807#8112#0" expanded="false" />
+            <element signature="e#8132#8342#0" expanded="false" />
+            <element signature="e#8355#8660#0" expanded="false" />
+            <element signature="e#8680#8890#0" expanded="false" />
+            <element signature="e#8903#9228#0" expanded="false" />
+            <element signature="e#9248#9458#0" expanded="false" />
+            <element signature="e#9460#9568#0" expanded="false" />
+            <element signature="e#12419#12996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -533,21 +526,19 @@
             <element signature="e#4356#4807#0" expanded="false" />
             <element signature="e#4829#5010#0" expanded="false" />
             <element signature="e#5031#5227#0" expanded="false" />
-            <element signature="e#6008#6093#0" expanded="false" />
-            <element signature="e#6108#6262#0" expanded="false" />
-            <element signature="e#6443#6706#0" expanded="false" />
-            <element signature="e#6718#6997#0" expanded="false" />
-            <element signature="e#7016#7226#0" expanded="false" />
-            <element signature="e#7239#7545#0" expanded="false" />
-            <element signature="e#7565#7775#0" expanded="false" />
-            <element signature="e#7788#8093#0" expanded="false" />
-            <element signature="e#8113#8323#0" expanded="false" />
-            <element signature="e#8336#8641#0" expanded="false" />
-            <element signature="e#8661#8871#0" expanded="false" />
-            <element signature="e#8884#9209#0" expanded="false" />
-            <element signature="e#9229#9439#0" expanded="false" />
-            <element signature="e#9441#9549#0" expanded="false" />
-            <element signature="e#12400#12977#0" expanded="false" />
+            <element signature="e#6462#6725#0" expanded="false" />
+            <element signature="e#6737#7016#0" expanded="false" />
+            <element signature="e#7035#7245#0" expanded="false" />
+            <element signature="e#7258#7564#0" expanded="false" />
+            <element signature="e#7584#7794#0" expanded="false" />
+            <element signature="e#7807#8112#0" expanded="false" />
+            <element signature="e#8132#8342#0" expanded="false" />
+            <element signature="e#8355#8660#0" expanded="false" />
+            <element signature="e#8680#8890#0" expanded="false" />
+            <element signature="e#8903#9228#0" expanded="false" />
+            <element signature="e#9248#9458#0" expanded="false" />
+            <element signature="e#9460#9568#0" expanded="false" />
+            <element signature="e#12419#12996#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -568,14 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/backend.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.8888888">
@@ -586,10 +569,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="12.75">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/dayView/dayCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.444445">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/partials/dayView/day.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2941175">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75">
-          <caret line="430" column="18" selection-start-line="430" selection-start-column="18" selection-end-line="430" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.53797466">
+          <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
           <folding>
             <element signature="e#1471#2827#0" expanded="false" />
             <element signature="e#2860#3117#0" expanded="false" />
@@ -599,38 +606,20 @@
             <element signature="e#4356#4807#0" expanded="false" />
             <element signature="e#4829#5010#0" expanded="false" />
             <element signature="e#5031#5227#0" expanded="false" />
-            <element signature="e#6008#6093#0" expanded="false" />
-            <element signature="e#6108#6262#0" expanded="false" />
-            <element signature="e#6443#6706#0" expanded="false" />
-            <element signature="e#6718#6997#0" expanded="false" />
-            <element signature="e#7016#7226#0" expanded="false" />
-            <element signature="e#7239#7545#0" expanded="false" />
-            <element signature="e#7565#7775#0" expanded="false" />
-            <element signature="e#7788#8093#0" expanded="false" />
-            <element signature="e#8113#8323#0" expanded="false" />
-            <element signature="e#8336#8641#0" expanded="false" />
-            <element signature="e#8661#8871#0" expanded="false" />
-            <element signature="e#8884#9209#0" expanded="false" />
-            <element signature="e#9229#9439#0" expanded="false" />
-            <element signature="e#9441#9549#0" expanded="false" />
-            <element signature="e#12400#12977#0" expanded="false" />
+            <element signature="e#6462#6725#0" expanded="false" />
+            <element signature="e#6737#7016#0" expanded="false" />
+            <element signature="e#7035#7245#0" expanded="false" />
+            <element signature="e#7258#7564#0" expanded="false" />
+            <element signature="e#7584#7794#0" expanded="false" />
+            <element signature="e#7807#8112#0" expanded="false" />
+            <element signature="e#8132#8342#0" expanded="false" />
+            <element signature="e#8355#8660#0" expanded="false" />
+            <element signature="e#8680#8890#0" expanded="false" />
+            <element signature="e#8903#9228#0" expanded="false" />
+            <element signature="e#9248#9458#0" expanded="false" />
+            <element signature="e#9460#9568#0" expanded="false" />
+            <element signature="e#12419#12996#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/partials/dayView/dayCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.444445">
-          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/partials/dayView/day.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.738255">
-          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>

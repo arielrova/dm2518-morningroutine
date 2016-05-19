@@ -5,7 +5,10 @@
       <div class="row weather">
             <div class="col-xs-6" id="box">
               <div id="weatherWrap">
-                <div id="cloud" ng-show="rain">
+                <div id="raincloud" ng-show="cloud">
+                  <span class='shadow'></span>
+                </div>
+                <div id="raincloud" ng-show="rain">
                   <span class='shadow'></span>
                   <div id="raindrop"></div>
                   <div id="raindrop2"></div>
@@ -26,7 +29,7 @@
                   <div id="sunray9"></div>
                 </div>
               </div>
-              <span>{{temp}}</span>
+              <span>{{temp}} Degs</span>
             </div>
             <div class="col-xs-6" id="box">
               <span>ShirtStuff</span>

@@ -20,14 +20,21 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
                   for (var i in timeseries) {
                     if (timeseries[i].validTime == $scope.apiDate ) {
                       $scope.temp = timeseries[i].t;
-                      if (timeseries[i].pit == 0) {
+                      if (timeseries[i].pit == 0 && timeseries[i].tcc > 2) {
+                        $scope.rain = false;
+                        $scope.sun = false;
+                        $scope.cloud = true;
+                        $scope.currentMessage = "Clouds everywhere. Eat them!";
+                      } else if (timeseries[i].pit == 0 && timeseries[i].tcc < 2) {
                         $scope.rain = false;
                         $scope.sun = true;
-                        $scope.currentMessage = "Don't forget your sunscreen!";
+                        $scope.cloud = false;
+                        $scope.currentMessage = "Don't forget your sunglasses!";
                       } else {
                         $scope.currentMessage = "Don't forget your umbrellaELLA.";
                         $scope.rain = true;
                         $scope.sun = false;
+                        $scope.cloud = false;
                       }
                     }
               }
