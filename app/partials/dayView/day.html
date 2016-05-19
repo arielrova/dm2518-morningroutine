@@ -5,14 +5,16 @@
       <div class="row weather">
             <div class="col-xs-6" id="box">
               <div id="weatherWrap">
-                <div id="cloud"><span class='shadow'></span>
+                <div id="cloud" ng-show="rain">
+                  <span class='shadow'></span>
                   <div id="raindrop"></div>
                   <div id="raindrop2"></div>
                   <div id="raindrop3"></div>
                   <div id="raindrop4"></div>
                   <div id="raindrop5"></div>
                 </div>
-                <div id="sun"><span class='shadow'></span>
+                <div id="sun" ng-show="sun">
+                  <span class='shadow'></span>
                   <div id="sunray"></div>
                   <div id="sunray2"></div>
                   <div id="sunray3"></div>
@@ -24,7 +26,7 @@
                   <div id="sunray9"></div>
                 </div>
               </div>
-                <p>TEMP MOFASA: {{weather}}</p>
+              <span>{{temp}}</span>
             </div>
             <div class="col-xs-6" id="box">
               <span>ShirtStuff</span>
@@ -49,7 +51,7 @@
       <div class="row message">
         <div class="col-xs-12" id="box">
           <div id="messagebox" class="box-child">
-            <h4 class="box-child" >{{ currentMessage() }}</h4>
+            <h4 class="box-child" >{{ currentMessage }}</h4>
           </div>
         </div>
       </div>

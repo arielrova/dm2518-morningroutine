@@ -426,6 +426,11 @@ body {
 
 }
 
+.temp {
+    font-weight: bold;
+    z-index:-9999;
+}
+
 #sunray {
     position:absolute;
     width: 5px;

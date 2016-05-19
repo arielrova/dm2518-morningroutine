@@ -13,15 +13,30 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         console.log($scope.positionLAT);
         console.log("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + $scope.positionLAT + "/lon/" + $scope.positionLON + "/data.json");
 
-
         // Plock lon och lat från mobilen och inserta här -------------------------------------------->
         $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + $scope.positionLAT + "/lon/" + $scope.positionLON + "/data.json")
             .then(function(response) {
-              $scope.weather = response.data.timeseries[0].t;
+                var timeseries = response.data.timeseries;
+                  for (var i in timeseries) {
+                    if (timeseries[i].validTime == $scope.apiDate ) {
+                      $scope.temp = timeseries[i].t;
+                      if (timeseries[i].pit == 0) {
+                        $scope.rain = false;
+                        $scope.sun = true;
+                        $scope.currentMessage = "Don't forget your sunscreen!";
+                      } else {
+                        $scope.currentMessage = "Don't forget your umbrellaELLA.";
+                        $scope.rain = true;
+                        $scope.sun = false;
+                      }
+                    }
+              }
             });
       });
     });
   }
+
+  $scope.apiDate = backend.getAPIdate();
 
   $scope.prevPage = function() {
     console.log('going to prev page');
@@ -33,6 +48,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
   $scope.thisDate = backend.getDate();
   //Dagens datum, just nu är idag alltid "20160507" men mer sofistikerad datumhantering följer
+
 
   $scope.userData = backend.read($scope.thisDate);
   /* Hämtar userdata för dagens datum och det rätta användarIDt. Returnerar JSON-träd med:
@@ -72,10 +88,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   // För att skriva till model/backend/data/firebase-pryl, använd backend.write().
   // Säg till vilka fler parametrar ni vill kunna skriva!
 
-  $scope.currentMessage = function() {
-    // Här kan vi skicka olika meddelanden beroende av olika parametrar
-    return "Don't forget your umbrella";
-  }
+  $scope.currentMessage = '';
 
   $scope.leavingTime = function() {
     // Skicka ut tiden när användaren ska åka hemifrån

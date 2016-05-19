@@ -4,8 +4,20 @@ morningRoutine.factory('backend', function() {
 
   var today = new Date();
   var lengthOfDay = 1000 * 60 * 60 * 24; // Milliseconds in a day
-
   var todayToString = today.toLocaleString();
+  var APItoday = today.toISOString();
+  console.log(APItoday);
+  var lol = APItoday.split("");
+  lol[14] = "0";
+  lol[15] = "0";
+  lol[17] = "0";
+  lol[18] = "0";
+  lol[19] = "";
+  lol[20] = "";
+  lol[21] = "";
+  lol[22] = "";
+  var hehe = lol.toString().replace( /,/g, "");
+
   var todayDay = today.getUTCDate();
   var todayYear = today.getUTCFullYear();
   var todayMonth = today.getUTCMonth();
@@ -15,6 +27,7 @@ morningRoutine.factory('backend', function() {
 
   var yesterday = new Date(new Date().getTime() - lengthOfDay);
   var yesterdayToString = yesterday.toLocaleString();
+  var APIyesterday = yesterday.toISOString();
   var yesterdayDay = yesterday.getUTCDate();
   var yesterdayYear = yesterday.getUTCFullYear();
   var yesterdayMonth = yesterday.getUTCMonth();
@@ -22,6 +35,7 @@ morningRoutine.factory('backend', function() {
   var yesterdayString = yesterdayYear + yesterdayMonth + yesterdayDay;
 
   var tomorrow = new Date(new Date().getTime() + lengthOfDay);
+  var APItomorrow = tomorrow.toISOString();
   var tomorrowToString = tomorrow.toLocaleString();
   var tomorrowDay = tomorrow.getUTCDate();
   var tomorrowYear = tomorrow.getUTCFullYear();
@@ -106,6 +120,10 @@ morningRoutine.factory('backend', function() {
     userID = id;
   };
 
+  var getAPIdate = function () {
+    return hehe;
+  };
+
   var getDate = function() {
     return todayString;
   };
@@ -158,6 +176,7 @@ morningRoutine.factory('backend', function() {
     getUserID: getUserID,
     write: write,
     read: read,
+    getAPIdate: getAPIdate,
     getDate: getDate,
     getTomorrow: getTomorrow,
     getYesterday: getYesterday,
