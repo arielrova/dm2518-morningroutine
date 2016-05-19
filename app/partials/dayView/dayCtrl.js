@@ -25,16 +25,19 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
                         $scope.sun = false;
                         $scope.cloud = true;
                         $scope.currentMessage = "Clouds everywhere. Eat them!";
+                        $scope.clothes = 'clothes2.png'
                       } else if (timeseries[i].pit == 0 && timeseries[i].tcc < 2) {
                         $scope.rain = false;
                         $scope.sun = true;
                         $scope.cloud = false;
                         $scope.currentMessage = "Don't forget your sunglasses!";
+                        $scope.clothes = 'clothes1.png'
                       } else {
                         $scope.currentMessage = "Don't forget your umbrellaELLA.";
                         $scope.rain = true;
                         $scope.sun = false;
                         $scope.cloud = false;
+                        $scope.clothes = 'clothes3.png'
                       }
                     }
               }
@@ -96,6 +99,10 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   // Säg till vilka fler parametrar ni vill kunna skriva!
 
   $scope.currentMessage = '';
+
+  $scope.breakfast = 'breakfast3.png'
+
+  $scope.clothes = 'clothes1.png'
 
   $scope.leavingTime = function() {
     // Skicka ut tiden när användaren ska åka hemifrån

@@ -6,7 +6,7 @@
     text-align:center;
     top:0;
     width:100%;
-    margin-top:100px;
+    margin-top:60px;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
 }
 
 .page h1    { font-size:60px; }
-.page a     { margin-top:50px; }
+.page a     { margin-top:5px; }
 
 /* PAGES (specific colors for each page)
 ============================================================================= */
