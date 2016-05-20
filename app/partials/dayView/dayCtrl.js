@@ -1,5 +1,8 @@
 morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
   $scope.user = backend.getUserID();
+  $scope.mLeavetime = 00;
+  $scope.hLeavetime = 08;
+
   //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
 

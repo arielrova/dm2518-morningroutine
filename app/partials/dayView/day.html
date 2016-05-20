@@ -43,7 +43,7 @@
       </div>
       <div class="row breakfast">
         <div class="col-xs-6" id="box">
-          <h4 class="standard-text box-child">Leave at: </br> {{ leavingTime() }}</h4>
+          <h4 class="standard-text box-child">Leave at: </br><input class="hour"type="number" min="0" max="23" ng-model="hLeavetime"><input class="min" min="0" max="59" type="number" ng-model="mLeavetime" /></h4>
         </div>
         <div class="col-xs-6" id="box">
           <img ng-src="img/{{breakfast}}" class="box-child"></img>
