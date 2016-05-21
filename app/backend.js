@@ -10,7 +10,6 @@ morningRoutine.factory('backend', function() {
   var todayYear = today.getUTCFullYear();
   var todayMonth = today.getUTCMonth();
   todayMonth = "0" + String(todayMonth + 1);
-  //var todayString = todayToString.split("-");
   var todayString = todayYear + todayMonth + todayDay;
 
   var yesterday = new Date(new Date().getTime() - lengthOfDay);
@@ -81,7 +80,7 @@ morningRoutine.factory('backend', function() {
       hour: 0,
       minutes: 0
     }
-  }
+  };
 
   var write = function(lunchbox, umbrella) {
     exampleUserData.lunchBox = lunchbox;
