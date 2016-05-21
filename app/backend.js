@@ -4,47 +4,61 @@ morningRoutine.factory('backend', function() {
 
   var today = new Date();
   var lengthOfDay = 1000 * 60 * 60 * 24; // Milliseconds in a day
-
   var todayToString = today.toLocaleString();
+  var APItoday = today.toISOString();
+  console.log(APItoday);
+  var lol = APItoday.split("");
+  lol[14] = "0";
+  lol[15] = "0";
+  lol[17] = "0";
+  lol[18] = "0";
+  lol[19] = "";
+  lol[20] = "";
+  lol[21] = "";
+  lol[22] = "";
+  var hehe = lol.toString().replace( /,/g, "");
+
   var todayDay = today.getUTCDate();
   var todayYear = today.getUTCFullYear();
   var todayMonth = today.getUTCMonth();
   todayMonth = "0" + String(todayMonth + 1);
   var todayString = todayYear + todayMonth + todayDay;
 
-  var yesterday = new Date(new Date().getTime() - lengthOfDay);
-  var yesterdayToString = yesterday.toLocaleString();
-  var yesterdayDay = yesterday.getUTCDate();
-  var yesterdayYear = yesterday.getUTCFullYear();
-  var yesterdayMonth = yesterday.getUTCMonth();
-  yesterdayMonth = "0" + String(yesterdayMonth + 1);
-  var yesterdayString = yesterdayYear + yesterdayMonth + yesterdayDay;
-
   var tomorrow = new Date(new Date().getTime() + lengthOfDay);
+  var APItomorrow = tomorrow.toISOString();
+  var fixdate = APItomorrow.split("");
+  fixdate[14] = "0";
+  fixdate[15] = "0";
+  fixdate[17] = "0";
+  fixdate[18] = "0";
+  fixdate[19] = "";
+  fixdate[20] = "";
+  fixdate[21] = "";
+  fixdate[22] = "";
+  var fixedDate = fixdate.toString().replace( /,/g, "");
+
+  var nextday = new Date(new Date().getTime() + 2*lengthOfDay);
+  console.log(nextday);
+  var APInextday = nextday.toISOString();
+  var nextfixdate = APInextday.split("");
+  nextfixdate[14] = "0";
+  nextfixdate[15] = "0";
+  nextfixdate[17] = "0";
+  nextfixdate[18] = "0";
+  nextfixdate[19] = "";
+  nextfixdate[20] = "";
+  nextfixdate[21] = "";
+  nextfixdate[22] = "";
+  var nextdayDate = nextfixdate.toString().replace( /,/g, "");
+
+
+
   var tomorrowToString = tomorrow.toLocaleString();
   var tomorrowDay = tomorrow.getUTCDate();
   var tomorrowYear = tomorrow.getUTCFullYear();
   var tomorrowMonth = tomorrow.getUTCMonth();
   tomorrowMonth = "0" + String(tomorrowMonth + 1);
   var tomorrowString = tomorrowYear + tomorrowMonth + tomorrowDay;
-
-  var exampleDays = {
-    yesterday: {
-      weatherMorning: { temp: 12, precip: 2 },
-      weatherNoon: { temp: 13, precip: 0 },
-      weatherEvening: { temp: 7, precip: 0 }
-    },
-    today: {
-      weatherMorning: { temp: 10, precip: 0 },
-      weatherNoon: { temp: 15, precip: 10 },
-      weatherEvening: { temp: 8, precip: 5 }
-    },
-    tomorrow: {
-      weatherMorning: { temp: 15, precip: 3 },
-      weatherNoon: { temp: 20, precip: 7 },
-      weatherEvening: { temp: 15, precip: 0 }
-    }
-  };
 
   var userData = {
     1: {
@@ -88,7 +102,7 @@ morningRoutine.factory('backend', function() {
   };
 
   var read = function(date) {
-    if (date == yesterdayString) {
+    if (date == todayString) {
       return userData[1];
     } else if (date == todayString) {
       return userData[2];
@@ -105,6 +119,10 @@ morningRoutine.factory('backend', function() {
     userID = id;
   };
 
+  var getAPIdate = function () {
+    return hehe;
+  };
+
   var getDate = function() {
     return todayString;
   };
@@ -113,19 +131,14 @@ morningRoutine.factory('backend', function() {
     return tomorrowString;
   };
 
-  var getYesterday = function() {
-    return yesterdayString;
+  var getAPITomorrow = function() {
+    return fixedDate;
   };
 
-  var getDayData = function(date) {
-    if (date == yesterdayString) {
-      return exampleDays[1];
-    } else if (date == todayString) {
-      return exampleDays[2];
-    } else if (date == tomorrowString) {
-      return exampleDays[3];
-    }
+  var getAPINextday = function() {
+    return nextdayDate;
   };
+
 
   var retrieveData = function() {
     firebase.child("users/" + userID + "/leaveTime").on("value", function(snapshot) {
@@ -141,7 +154,7 @@ morningRoutine.factory('backend', function() {
       var days = snapshot.val();
       var k = 1;
       for (var j in days) {
-        if (j == yesterdayString || j == todayString || j == tomorrowString) {
+        if (j == todayString || j == todayString || j == tomorrowString) {
           userData[k].umbrella = days[j].umbrella;
           userData[k].lunchBox = days[j].lunchbox;
           k = k + 1;
@@ -157,11 +170,12 @@ morningRoutine.factory('backend', function() {
     getUserID: getUserID,
     write: write,
     read: read,
+    getAPIdate: getAPIdate,
     getDate: getDate,
     getTomorrow: getTomorrow,
-    getYesterday: getYesterday,
-    getDayData: getDayData,
     setUserID: setUserID,
-    retrieveData: retrieveData
+    retrieveData: retrieveData,
+    getAPITomorrow: getAPITomorrow,
+    getAPINextday: getAPINextday
   };
 });

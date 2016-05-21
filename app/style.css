@@ -1,20 +1,148 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 .page        {
     bottom:0;
-    padding-top:200px;
     position:absolute;
     text-align:center;
     top:0;
     width:100%;
+    margin-top:60px;
+}
+
+header {
+    position: relative;
+    height:50px;
+}
+
+.hour {
+    color:#000000;
+}
+
+.min {
+    color: #000;
 }
 
 .page h1    { font-size:60px; }
-.page a     { margin-top:50px; }
 
 /* PAGES (specific colors for each page)
 ============================================================================= */
 .page-home      { background:#00D0BC; color:#00907c; }
 .page-about     { background:#E59400; color:#a55400; }
 .page-contact   { background:#ffa6bb; color:#9e0000; }
+
+.container {
+    /*background-color: #039BE5;*/
+    background: #039BE5; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#039BE5, #B3E5FC); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#039BE5, #B3E5FC); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#039BE5, #B3E5FC); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#039BE5, #B3E5FC); /* Standard syntax */
+
+}
+
+#login {
+    background-image: url(img/back.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.standard-text-big {
+    font-family: Roboto;
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-size: 300%;
+}
+.standard-text {
+    font-family: Roboto;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+.title-text {
+    font-family: Roboto;
+    color: #039BE5;
+}
+
+#morning-text {
+    font-family: Roboto;
+    color: white;
+    padding-top: 60px;
+}
+
+#box {
+    display: flex;
+    /*border:1px solid #000;*/
+    min-height:100px;
+    justify-content: center;
+}
+
+.box-child {
+   max-height: 95px;
+   margin: auto; 
+}
+
+.future-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 175px;
+}
+
+.future-box-child {
+    max-height: 150px;
+    margin: auto;
+}
+
+.weather {
+    background-color: #039BE5;
+}
+
+.breakfast {
+    background-color: #29B6F6;
+}
+
+.lunch {
+    background-color: #4FC3F7;
+}
+
+.message {
+    background-color: #81D4FA;
+}
+
+.date {
+    background-color: #B3E5FC;
+}
+
+#future-view {
+    width: 100%;
+    height: 100%;
+}
+
+#future-clothes {
+    max-height: 200px;
+}
+
+#messagebox {
+    height: 60px;
+    padding: 20px;
+    border-style: dashed;
+    border-color: white;
+}
+
+#messagebox h4 {
+    height: 20px;
+    font-family: Roboto;
+    color: white;
+}
+
+h4{
+    font-family: Roboto;
+    color: white;
+}
+
 
 /* ANIMATIONS
 ============================================================================= */
@@ -146,9 +274,50 @@
 body {
     background: #ccc;
 }
-#cloud {
-    width: 140px; height: 48px;
 
+#daymenu {
+    display: flex;
+    background-color: lightgrey;
+}
+
+#daymenu a .active-link {
+    background-color: #000;
+}
+
+#today, #tomorrow {
+    border-right:1px solid #c6c6c6;
+    padding:5px;
+    font-size:10px;
+    text-transform: uppercase;
+    flex-grow:1;
+    color:grey;
+}
+
+.row a:active {
+    background-color: #000;
+}
+
+#nextday {
+    padding:5px;
+    font-size:10px;
+    text-transform: uppercase;
+    flex-grow:1;
+    color:grey;
+}
+
+#today:target, #tomorrow:target, #nextday:target {
+    background-color: #000;
+}
+
+/*a:active {
+    text-shadow: 0 0 50px rgb(255, 16, 0);
+}*/
+
+#raincloud {
+    width: 140px; height: 48px;
+    margin:auto;
+    z-index:10;
+    position: relative;
     background: #f2f9fe;
     background: linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
     background: -webkit-linear-gradient(top, #f2f9fe 5%, #d6f0fd 100%);
@@ -160,19 +329,24 @@ body {
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
 
-    left:-300px;
-    position: relative;
-    margin: 120px auto 20px;
+
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
 }
 
-#cloud:after, #cloud:before {
+#raincloud:after, #raincloud:before {
     content: '';
     position: absolute;
+    z-index: -1;
+
     background: #f2f9fe;
-    z-index: -1
+
 }
 
-#cloud:after {
+#raincloud:after {
     width: 50px; height: 50px;
     top: -30px; left: 70px;
 
@@ -181,7 +355,7 @@ body {
     -moz-border-radius: 100px;
 }
 
-#cloud:before {
+#raincloud:before {
     width: 80px; height: 80px;
     top: -40px; right: 35px;
 
@@ -338,27 +512,37 @@ body {
     to      { transform: translateY(100px); }
 }
 
+#weatherWrap {
+    padding:10px;
+}
+
 #sun {
-    width:100px;
-    height:100px;
+    width:50px;
+    height:50px;
+    margin:auto;
     border-radius:100px;
     background: linear-gradient(to bottom left, red, yellow);
     position: relative;
-    left:400px;
-    
+
     animation: sunpulse 2s; z-index: 8888;
     animation-iteration-count:infinite;
     animation-delay: 0.25s;
+
+}
+
+.temp {
+    font-weight: bold;
+    z-index:-9999;
 }
 
 #sunray {
     position:absolute;
-    width: 10px;
-    left:45px;
-    top: -50px;
+    width: 5px;
+    left:20px;
+    top: -25px;
     height: 10px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #FF4400;
+    border-bottom: 20px solid #FF4400;
     border-left: 5px solid transparent;
     border-top: 0;
 
@@ -367,25 +551,21 @@ body {
 #sunray2 {
     position:absolute;
     width: 10px;
-    left:45px;
-    top: -50px;
     height: 10px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #FF4400;
+    border-bottom: 20px solid #FF4400;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    transform: rotate(45deg) translate(4em, -1.5em) rotate(-45deg) rotate(45deg);
+    transform: rotate(45deg) translate(1.9em, -3.2em) rotate(-45deg) rotate(45deg);
 }
 
 #sunray3 {
     position:absolute;
     width: 10px;
     height: 10px;
-    left:45px;
-    top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #FF4400;
+    border-bottom: 20px solid #FF4400;
     border-left: 5px solid transparent;
     border-top: 0;
 
@@ -393,97 +573,55 @@ body {
         animation-iteration-count:infinite;
         animation-delay: 0.25s;*/
 
-    transform: rotate(90deg) translate(6em, -5.5em) rotate(-90deg) rotate(90deg);
+    transform: rotate(90deg) translate(1.1em, -4.5em) rotate(-90deg) rotate(90deg);
 }
 
 #sunray4 {
     position:absolute;
     width: 10px;
     height: 10px;
-    left:45px;
-    top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #FF4400;
+    border-bottom: 20px solid #FF4400;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
-
-    transform: rotate(135deg) translate(4em, -9.5em) rotate(-135deg) rotate(135deg);
+    transform: rotate(135deg) translate(0em, -5em) rotate(-135deg) rotate(135deg);
 }
 
 #sunray5 {
     position:absolute;
     width: 10px;
     height: 10px;
-    left:45px;
-    top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #ffff00;
+    border-bottom: 20px solid #ffff00;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
-
-    transform: rotate(180deg) translate(0, -11em) rotate(-180deg) rotate(180deg);
-}
-
-#sunray6 {
-    position:absolute;
-    width: 10px;
-    height: 10px;
-    left:45px;
-    top: -50px;
-    border-right: 5px solid transparent;
-    border-bottom: 40px solid #ffff00;
-    border-left: 5px solid transparent;
-    border-top: 0;
-
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
-
-    transform: rotate(180deg) translate(0, -11em) rotate(-180deg) rotate(180deg);
+    transform: rotate(180deg) translate(-1.4em, -4.5em) rotate(-180deg) rotate(180deg);
 }
 
 #sunray7 {
     position:absolute;
     width: 10px;
     height: 10px;
-    left:45px;
-    top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #ffff00;
+    border-bottom: 20px solid #ffff00;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
-
-    transform: rotate(225deg) translate(-4em, -9.5em) rotate(-225deg) rotate(225deg);
+    transform: rotate(225deg) translate(-2em, -3em) rotate(-225deg) rotate(225deg);
 }
 
 #sunray8 {
     position:absolute;
     width: 10px;
     height: 10px;
-    left:45px;
-    top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #ffff00;
+    border-bottom: 20px solid #ffff00;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
-
-    transform: rotate(-90deg) translate(-6em, -5.5em) rotate(90deg) rotate(-90deg);
+    transform: rotate(-90deg) translate(-1em, -1.8em) rotate(90deg) rotate(-90deg);
 }
 
 #sunray9 {
@@ -493,15 +631,12 @@ body {
     left:45px;
     top: -50px;
     border-right: 5px solid transparent;
-    border-bottom: 40px solid #FF4400;
+    border-bottom: 20px solid #FF4400;
     border-left: 5px solid transparent;
     border-top: 0;
 
-    /*    animation: sunpulse 2s; z-index: 8888;
-        animation-iteration-count:infinite;
-        animation-delay: 0.25s;*/
 
-    transform: rotate(-45deg) translate(-4em, -1.5em) rotate(45deg) rotate(-45deg);
+    transform: rotate(-45deg) translate(-4.5em, -1em) rotate(45deg) rotate(-45deg);
 }
 
 @keyframes sunpulse {
@@ -542,21 +677,16 @@ header h3 {
     height: 30px;
     color: #000;
     border-bottom: solid;
-    border-top: solid;
-    border-width: 6px;
+    border-left: solid;
+    border-width: 2px;
     position: absolute;
     right: 25px;
     top: 20px;
     box-sizing: border-box;
-}
 
-.burger:after {
-    content: '';
-    border-bottom: solid;
-    border-width: inherit;
-    background-color: #000;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 6px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
