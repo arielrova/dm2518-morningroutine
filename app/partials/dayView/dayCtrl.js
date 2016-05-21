@@ -2,6 +2,8 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.user = backend.getUserID();
   $scope.mLeavetime = 00;
   $scope.hLeavetime = 08;
+  $scope.isToday = true
+  $scope.isFuture = false;
 
   //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
@@ -99,14 +101,20 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
     if (event.currentTarget.id == "tomorrow") {
       $scope.apiDate = backend.getAPITomorrow();
       $scope.getWeather($scope.apiDate);
+      $scope.isToday = false;
+      $scope.isFuture = true;
 
     } else if (event.currentTarget.id == "today") {
       $scope.apiDate = backend.getAPIdate();
       $scope.getWeather($scope.apiDate);
+      $scope.isToday = true;
+      $scope.isFuture = false;
 
     } else {
       $scope.apiDate = backend.getAPINextday();
       $scope.getWeather($scope.apiDate);
+      $scope.isToday = false;
+      $scope.isFuture = true;
     }
 
     $scope.userData = backend.read($scope.thisDate);
