@@ -40,6 +40,14 @@ header {
 
 }
 
+#login {
+    background-image: url(img/back.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .standard-text-big {
     font-family: Roboto;
     color: white;
@@ -53,9 +61,15 @@ header {
     padding: 0;
     margin: 0;
 }
-.title-text, h1 {
+.title-text {
     font-family: Roboto;
     color: #039BE5;
+}
+
+#morning-text {
+    font-family: Roboto;
+    color: white;
+    padding-top: 60px;
 }
 
 #box {
@@ -74,11 +88,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    min-height: 175px;
 }
 
 .future-box-child {
-    max-height: 180px;
+    max-height: 150px;
     margin: auto;
 }
 
