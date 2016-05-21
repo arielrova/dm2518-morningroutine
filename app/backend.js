@@ -1,6 +1,7 @@
 morningRoutine.factory('backend', function() {
   var userID;
   var firebase = new Firebase("https://glaring-torch-8524.firebaseio.com/");
+  console.log(firebase);
 
   var today = new Date();
   var lengthOfDay = 1000 * 60 * 60 * 24; // Milliseconds in a day
@@ -159,32 +160,17 @@ morningRoutine.factory('backend', function() {
   };
 
   var retrieveData = function() {
-    /*
+    console.log("hello, I'm retrieve!");
     firebase.child("users/" + userID + "/days").on("value", function(snapshot) {
-      var leave = snapshot.val();
-      console.log(leave);
-      var h = 1;
-      for (var i in leave) {
-        console.log(i);
-        if (i == todayString || i == tomorrowString || i == nextDayString) {
-          userData[h].leaveTime.hour = leave[i].leaveTime.hour;
-          userData[h].leaveTime.minutes = leave[i].leaveTime.minutes;
-          h = h + 1;
-        }
-      }
-    }); */
-
-    firebase.child("users/" + userID + "/days").on("value", function(snapshot) {
+      console.log(snapshot);
       var days = snapshot.val();
       var k = 1;
       for (var j in days) {
-        console.log(j);
         if (j == todayString || j == tomorrowString || j == nextDayString) {
           userData[k].umbrella = days[j].umbrella;
           userData[k].lunchBox = days[j].lunchbox;
           userData[k].leaveTime.hour = days[j].leaveTime.hour;
           userData[k].leaveTime.minutes = days[j].leaveTime.minutes;
-
           k = k + 1;
         } else {
           userData[k].umbrella = false;

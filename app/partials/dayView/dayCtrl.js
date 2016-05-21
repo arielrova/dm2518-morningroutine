@@ -1,13 +1,17 @@
 morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
+  $scope.userParam = $routeParams.user;
+  backend.setUserID($scope.userParam);
   $scope.user = backend.getUserID();
-  $scope.mLeavetime = "00";
-  $scope.hLeavetime = "08";
+  console.log($scope.user);
   $scope.mSetLeaveTime = 0;
   $scope.hSetLeaveTime = 8;
+  $scope.mLeavetime = 0;
+  $scope.hLeavetime = 8;
   $scope.isToday = true;
   $scope.isFuture = false;
-  console.log($scope.user);
 
+
+  //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
 
   if (navigator.geolocation) {
@@ -15,7 +19,6 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
       $scope.$apply(function() {
         var lat = position.coords.latitude.toFixed(2);
         var lon = position.coords.longitude.toFixed(2);
-
 
         $scope.getWeather = function(date) {
           $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + lat + "/lon/" + lon + "/data.json")
@@ -26,24 +29,24 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
                 if (timeseries[i].validTime == date) {
                   $scope.temp = timeseries[i].t;
                   console.log("TEMP" + $scope.temp);
-                  if (timeseries[i].pit == 0 && timeseries[i].tcc > 2) {
+                  if (timeseries[i].pit === 0 && timeseries[i].tcc > 2) {
                     $scope.rain = false;
                     $scope.sun = false;
                     $scope.cloud = true;
                     $scope.currentMessage = "Clouds everywhere. Eat them!";
-                    $scope.clothes = 'clothes2.png'
-                  } else if (timeseries[i].pit == 0 && timeseries[i].tcc < 2) {
+                    $scope.clothes = 'clothes2.png';
+                  } else if (timeseries[i].pit === 0 && timeseries[i].tcc < 2) {
                     $scope.rain = false;
                     $scope.sun = true;
                     $scope.cloud = false;
                     $scope.currentMessage = "Don't forget your sunglasses!";
-                    $scope.clothes = 'clothes1.png'
+                    $scope.clothes = 'clothes1.png';
                   } else {
                     $scope.currentMessage = "Don't forget your umbrellaELLA.";
                     $scope.rain = true;
                     $scope.sun = false;
                     $scope.cloud = false;
-                    $scope.clothes = 'clothes3.png'
+                    $scope.clothes = 'clothes3.png';
                   }
                 }
               }
@@ -75,15 +78,48 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           } else if ($scope.apiDate == backend.getAPITomorrow()) {
             $scope.apiDate = backend.getAPINextday();
             $scope.getWeather($scope.apiDate);
-
           }
         };
 
         $scope.thisDate = backend.getDate();
         //Dagens datum, just nu är idag alltid "20160507" men mer sofistikerad datumhantering följer
 
+        $scope.getBreakfast = function() {
+          // Hämtar den aktuella tiden för att sedan jämföra med den av användaren
+          // givna tiden för att gå hemifrån. Uppdateras med ng-change när användaren 
+          // ändrar sin tid.
+
+          currentTime = new Date();
+          currentHour = currentTime.getHours();
+          currentMinute = currentTime.getMinutes();
+          currentCalc = currentHour * 60 + currentMinute;
+
+          leaveCalc = $scope.hLeavetime * 60 + $scope.mLeavetime;
+
+          // Sätter nuvarande tid till kl 7:45 för att kunna testa
+          currentCalc = 465;
+
+          diff = leaveCalc - currentCalc;
+
+          if (diff < 0) {
+            $scope.breakfast = 'breakfast4.png';
+          } else if (diff <= 15) {
+            $scope.breakfast = 'breakfast1.png';
+          } else if (diff > 15 && diff <= 30) {
+            $scope.breakfast = 'breakfast2.png';
+          } else if (diff > 30) {
+            $scope.breakfast = 'breakfast3.png';
+          }
+        };
+
+        $scope.getBreakfast();
+
+        console.log($scope.mLeavetime);
+        console.log($scope.hLeavetime);
+
 
         $scope.userData = backend.read($scope.thisDate);
+        console.log($scope.userData);
         $scope.mLeavetime = String($scope.userData.leaveTime.minutes);
         if ($scope.mLeavetime.length == 1) {
           $scope.mLeavetime = $scope.mLeavetime + "0";
@@ -92,6 +128,9 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         if ($scope.hLeavetime.length == 1) {
           $scope.hLeavetime = "0" + $scope.hLeavetime;
         }
+
+        console.log($scope.mLeavetime);
+        console.log($scope.hLeavetime);
         /* Hämtar userdata för dagens datum och det rätta användarIDt. Returnerar JSON-träd med:
 
         0. Boolean för matlåda. False om den inte är uttagen ur kylen, true om den är uttagen
@@ -127,12 +166,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
             $scope.isFuture = true;
             $scope.thisDate = backend.getDayAfterTomorrow();
           }
-
-          backend.retrieveData();
-          $scope.userData = backend.read($scope.thisDate);
-          console.log($scope.userData);
         };
-
 
         $scope.writeTime = function() {
           backend.writeTime($scope.thisDate, $scope.user, $scope.mSetLeaveTime, $scope.hSetLeaveTime);
@@ -153,9 +187,9 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
         $scope.ifLunchbox = function() {
           var lunch = false;
-          if (lunch == true) {
+          if (lunch === true) {
             return 'bag.png';
-          } else if (lunch == false) {
+          } else if (lunch === false) {
             return 'fridge.png';
           }
         };

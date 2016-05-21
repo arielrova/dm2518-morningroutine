@@ -1,6 +1,10 @@
 <div class="page" id="day" ng-app="morningRoutine">
   <!--  <ng-include src="'partials/navbar/navbar.html'"></ng-include>-->
   <div ng-controller="dayCtrl" ng-swipe-left="nextPage()" ng-swipe-right="prevPage()">
+    <header>
+      <h3 class="title-text">AutoMorning</h3>
+      <a href="#/login" id="menu" class="burger"></a>
+    </header>
     <div class="container">
       <div id="daymenu" class="row">
         <a id="today" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Today</a>

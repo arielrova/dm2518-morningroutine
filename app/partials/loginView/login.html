@@ -1,7 +1,7 @@
-<div class="page" id="login" ng-app="morningRoutine">
+<div id="login" ng-app="morningRoutine">
   <div ng-controller="loginCtrl">
     <h1 id="morning-text">Good morning!</h1>
-    <select ng-model="user" ng-change="updateUser(user)">
+    <!--     <select ng-model="user" ng-click="updateUser(user)">
       <option value="1">BQR</option>
       <option value="2">Ceder</option>
       <option value="3">Gustafsson</option>
@@ -9,6 +9,20 @@
     </select>
     <a href="#day/{{user}}/{{thisDate}}">
       <input type="submit" name="" value="go online!">
-    </a>
+    </a> -->
+    <div class="user-box">
+      <div class="user-list user-box-child">
+        <a class="user-list" ng-href="#day/1/{{thisDate}}"><span class="glyphicon glyphicon-user"></span> BQR</a>
+      </div>
+      <div class="user-list user-box-child">
+        <a class="user-list" ng-href="#day/2/{{thisDate}}"><span class="glyphicon glyphicon-user"></span> Ceder</a>
+      </div>
+      <div class="user-list user-box-child">
+        <a class="user-list" ng-href="#day/3/{{thisDate}}"><span class="glyphicon glyphicon-user"></span> Gustafsson</a>
+      </div>
+      <div class="user-list user-box-child">
+        <a class="user-list" ng-href="#day/4/{{thisDate}}"><span class="glyphicon glyphicon-user"></span> Klint</a>
+      </div>
+    </div>
   </div>
 </div>
