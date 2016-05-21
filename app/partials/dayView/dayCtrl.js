@@ -1,9 +1,10 @@
 morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $http) {
   $scope.user = backend.getUserID();
   $scope.mLeavetime = 00;
-  $scope.hLeavetime = 08;
+  $scope.hLeavetime = 8;
   $scope.isToday = true
   $scope.isFuture = false;
+
 
   //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
@@ -97,6 +98,34 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   3. Kvällens temperatir och nederbörd, grader i heltal celsius, nederbörd i heltal millimeter
   */
 
+  $scope.getBreakfast = function() {
+    // Hämtar den aktuella tiden för att sedan jämföra med den av användaren
+    // givna tiden för att gå hemifrån. Uppdateras med ng-change när användaren 
+    // ändrar sin tid.
+
+    currentTime = new Date();
+    currentHour = currentTime.getHours();
+    currentMinute = currentTime.getMinutes();
+    currentCalc = currentHour * 60 + currentMinute;
+
+    leaveCalc = $scope.hLeavetime * 60 + $scope.mLeavetime;
+
+    // Sätter nuvarande tid till kl 7:45 för att kunna testa
+    currentCalc = 465;
+
+    diff = leaveCalc - currentCalc;
+
+    if (diff < 0 ) {
+        $scope.breakfast = 'breakfast4.png';
+    } else if (diff <= 15) {
+        $scope.breakfast = 'breakfast1.png';
+    } else if (diff > 15 && diff <= 30) {
+        $scope.breakfast = 'breakfast2.png';
+    } else if (diff > 30) {
+        $scope.breakfast = 'breakfast3.png';
+    }
+  }
+
   $scope.changeDay = function(event) {
     if (event.currentTarget.id == "tomorrow") {
       $scope.apiDate = backend.getAPITomorrow();
@@ -150,6 +179,8 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
       return 'fridge.png';
     }
   }
+
+  $scope.getBreakfast()
 
 
       });
