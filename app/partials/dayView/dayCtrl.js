@@ -9,6 +9,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.hLeavetime = 8;
   $scope.isToday = true;
   $scope.isFuture = false;
+  $scope.SetLeaveTime = null;
 
 
   //AnvändarID, just nu alltid bara "1".
@@ -97,11 +98,11 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           leaveCalc = $scope.hLeavetime * 60 + $scope.mLeavetime;
 
           // Sätter nuvarande tid till kl 7:45 för att kunna testa
-          currentCalc = 465;
+          currentCalc = 600;
 
           diff = leaveCalc - currentCalc;
 
-          if (diff < 0) {
+          if (diff <= 0) {
             $scope.breakfast = 'breakfast4.png';
           } else if (diff <= 15) {
             $scope.breakfast = 'breakfast1.png';
@@ -169,7 +170,14 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         };
 
         $scope.writeTime = function() {
-          backend.writeTime($scope.thisDate, $scope.user, $scope.mSetLeaveTime, $scope.hSetLeaveTime);
+          // Hämta ut minuter och timmar för att skicka till db
+
+          var hour = $scope.SetLeaveTime.getHours();
+          var minute = $scope.SetLeaveTime.getMinutes();
+          backend.writeTime($scope.thisDate, $scope.user, minute, hour);
+
+          // $scope.hLeavetime = hour;
+          // $scope.mLeavetime = minute;
         };
         // För att skriva till model/backend/data/firebase-pryl, använd backend.write().
         // Säg till vilka fler parametrar ni vill kunna skriva!

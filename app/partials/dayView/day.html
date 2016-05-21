@@ -47,8 +47,7 @@
         </div>
         <div class="row breakfast">
           <div class="col-xs-6" id="box">
-            <h4 class="standard-text box-child">Leave at: </br></h4>
-            <h4 class="standard-text box-child"> {{hLeavetime}}:{{mLeavetime}} </h4>
+            <h4 class="standard-text box-child">Leave at {{hLeavetime}}:{{mLeavetime}} </h4>
           </div>
           <div class="col-xs-6" id="box">
             <img ng-src="img/{{breakfast}}" class="box-child"></img>
@@ -112,19 +111,23 @@
             <img ng-src="img/{{clothes}}" class="future-box-child" id="future-clothes"></img>
           </div>
         </div>
+   
         <div class="row future-box">
-          <div class="col-xs-12 future-box-child">
-            <h4 class="standard-text">{{thisDate}}</h4>
-          </div>
+            <div class="col-xs-12 future-box-child">
+                <h4 class="standard-text">When do you need to leave for work?</h4>
+       <!--          <div id="leave-input">
+                    <input class="hour" type="number" min="0" max="23" ng-model="hSetLeaveTime">
+                    <input class="min btn btn-default" min="0" max="59" type="number" ng-model="mSetLeaveTime">
+                    <button class="btn btn-default" type="submit" ng-click="writeTime()">Set leave time</button>
+                    
+                </div> -->
+                <input id="leave-input" type="time" ng-model="SetLeaveTime" ng-change="writeTime()"></input>
+                <h4 class="standard-text">{{thisDate}}</h4>
+            </div>
+        
+            
         </div>
-        <div class="row future-box">
-          <h4 class="standard-text">When do you need to leave for work?</h4>
-        </div>
-        <div class="row future-box-child">
-          <input class="hour" type="number" min="0" max="23" ng-model="hSetLeaveTime">
-          <input class="min" min="0" max="59" type="number" ng-model="mSetLeaveTime">
-          <button type="submit" ng-click="writeTime()">Set leave time</button>
-        </div>
+          
       </div>
     </div>
   </div>
