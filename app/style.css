@@ -6,12 +6,12 @@
     text-align:center;
     top:0;
     width:100%;
-    margin-top:60px;
 }
 
 header {
     position: relative;
     height:50px;
+    margin-bottom: 10px;
 }
 
 .hour {
@@ -41,11 +41,30 @@ header {
 }
 
 #login {
+    height: 100vh;
+    width: 100vw;
     background-image: url(img/back.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position:absolute;
+    text-align:center;
+}
+
+.user-list {
+    color: white;
+    padding: 5px;
+}
+
+.user-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-box-child {
+    min-width: 100px;
 }
 
 .standard-text-big {
