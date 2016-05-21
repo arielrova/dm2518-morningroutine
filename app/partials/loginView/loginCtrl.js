@@ -5,6 +5,7 @@ morningRoutine.controller("loginCtrl", function($scope, $routeParams, backend) {
 
   $scope.updateUser = function(user) {
     backend.setUserID($scope.user);
+    console.log(user);
   };
 
 });

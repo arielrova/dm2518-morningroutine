@@ -2,74 +2,82 @@
   "users": {
     "1": {
       "name": "BQR",
-      "leaveTime": { "hour": 6, "minutes": 30 },
       "days": {
-        "20160516": {
+        "20160521": {
           "lunchbox": true,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 6, "minutes": 30 }
         },
-        "20160517": {
+        "20160522": {
           "lunchbox": false,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 6, "minutes": 30 }
         },
-        "20160518": {
+        "20160523": {
           "lunchbox": false,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 6, "minutes": 30 }
         }
       }
     },
     "2": {
       "name": "Ceder",
-      "leaveTime": { "hour": 7, "minutes": 0 },
       "days": {
-        "20160516": {
+        "20160521": {
           "lunchbox": false,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 7, "minutes": 0 }
         },
-        "20160517": {
+        "20160522": {
           "lunchbox": true,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 7, "minutes": 0 }
         },
-        "20160518": {
+        "20160523": {
           "lunchbox": false,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 7, "minutes": 0 }
         }
       }
     },
     "3": {
       "name": "Gustafsson",
-      "leaveTime": { "hour": 7, "minutes": 30 },
       "days": {
-        "20160516": {
+        "20160521": {
           "lunchbox": true,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 7, "minutes": 30 }
         },
-        "20160517": {
+        "20160522": {
           "lunchbox": false,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 7, "minutes": 30 }
         },
-        "20160518": {
+        "20160523": {
           "lunchbox": false,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 7, "minutes": 30 }
         }
       }
     },
     "4": {
       "name": "Klint",
-      "leaveTime": { "hour": 10, "minutes": 0 },
       "days": {
-        "20160516": {
+        "20160521": {
           "lunchbox": false,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 10, "minutes": 0 }
         },
-        "20160517": {
+        "20160522": {
           "lunchbox": true,
-          "umbrella": true
+          "umbrella": true,
+          "leaveTime": { "hour": 10, "minutes": 0 }
 
         },
-        "20160518": {
+        "20160523": {
           "lunchbox": false,
-          "umbrella": false
+          "umbrella": false,
+          "leaveTime": { "hour": 10, "minutes": 0 }
         }
       }
     }

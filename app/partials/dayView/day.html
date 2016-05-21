@@ -1,86 +1,19 @@
 <div class="page" id="day" ng-app="morningRoutine">
-<!--  <ng-include src="'partials/navbar/navbar.html'"></ng-include>-->
+  <!--  <ng-include src="'partials/navbar/navbar.html'"></ng-include>-->
   <div ng-controller="dayCtrl" ng-swipe-left="nextPage()" ng-swipe-right="prevPage()">
     <div class="container">
-        <div id="daymenu" class="row">
-          <a id="today" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Today</a>
-          <a id="tomorrow" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Tomorrow</a>
-          <a id="nextday" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Next day</a>
-        </div>
-
-        <div id="today-view" ng-show="isToday">
-          <div class="row weather">
-                <div class="col-xs-6" id="box">
-                  <div class="box-child" id="weatherWrap">
-                    <div id="raincloud" ng-show="cloud">
-                      <span class='shadow'></span>
-                    </div>
-                    <div id="raincloud" ng-show="rain">
-                      <span class='shadow'></span>
-                      <div id="raindrop"></div>
-                      <div id="raindrop2"></div>
-                      <div id="raindrop3"></div>
-                      <div id="raindrop4"></div>
-                      <div id="raindrop5"></div>
-                    </div>
-                    <div id="sun" ng-show="sun">
-                      <span class='shadow'></span>
-                      <div id="sunray"></div>
-                      <div id="sunray2"></div>
-                      <div id="sunray3"></div>
-                      <div id="sunray4"></div>
-                      <div id="sunray5"></div>
-                      <div id="sunray6"></div>
-                      <div id="sunray7"></div>
-                      <div id="sunray8"></div>
-                      <div id="sunray9"></div>
-                    </div>
-                    <h4 class="standard-text">{{temp}} °C</h4>
-                  </div>
-                  
-                </div>
-                <div class="col-xs-6" id="box">
-                  <img ng-src="img/{{clothes}}" class="box-child"></img>
-                </div>
-          </div>
-          <div class="row breakfast">
-            <div class="col-xs-6" id="box">
-              <h4 class="standard-text box-child">Leave at: </br><input class="hour"type="number" min="0" max="23" ng-model="hLeavetime"><input class="min" min="0" max="59" type="number" ng-model="mLeavetime" /></h4>
-            </div>
-            <div class="col-xs-6" id="box">
-              <img ng-src="img/{{breakfast}}" class="box-child"></img>
-            </div>
-          </div>
-          <div class="row lunch">
-            <div class="col-xs-6" id="box">
-              <img src="img/lunchbox.png" class="box-child"></img>
-            </div>
-            <div class="col-xs-6" id="box">
-              <img ng-src="img/{{ifLunchbox()}}" class="box-child"></img>
-            </div>
-          </div>
-          <div class="row message">
-            <div class="col-xs-12" id="box">
-              <div id="messagebox" class="box-child">
-                <h4 class="box-child" >{{ currentMessage }}</h4>
-              </div>
-            </div>
-          </div>
-          <div class="row date">
-            <div class="col-xs-12" id="box">
-              <h4 class="standard-text box-child">{{thisDate}}</h4>
-            </div>
-          </div>
-        </div>
-
-        <div id="future-view" ng-show="isFuture">
-          <div class="row future-box" id="future-weather">
-            <div class="div-xs-6 future-box-child">
-                
+      <div id="daymenu" class="row">
+        <a id="today" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Today</a>
+        <a id="tomorrow" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Tomorrow</a>
+        <a id="nextday" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Next day</a>
+      </div>
+      <div id="today-view" ng-show="isToday">
+        <div class="row weather">
+          <div class="col-xs-6" id="box">
+            <div class="box-child" id="weatherWrap">
               <div id="raincloud" ng-show="cloud">
                 <span class='shadow'></span>
               </div>
-
               <div id="raincloud" ng-show="rain">
                 <span class='shadow'></span>
                 <div id="raindrop"></div>
@@ -89,7 +22,6 @@
                 <div id="raindrop4"></div>
                 <div id="raindrop5"></div>
               </div>
-
               <div id="sun" ng-show="sun">
                 <span class='shadow'></span>
                 <div id="sunray"></div>
@@ -102,28 +34,95 @@
                 <div id="sunray8"></div>
                 <div id="sunray9"></div>
               </div>
-          
-            </div>
-          
-            <div class="div-xs-6 future-box-child">
-              <h4 class="standard-text-big">{{temp}} °C</h4>
-            </div>
-
-          </div>
-
-          <div class="row future-box">
-              <div class="div-xs-10 future-box-child">
-                <h4 class="standard-text">Perhaps you should wear a..</h4>
-                <img ng-src="img/{{clothes}}" class="future-box-child" id="future-clothes"></img>
-              </div>
-          </div>
-          <div class="row future-box">
-            <div class="col-xs-12 future-box-child">
-              <h4 class="standard-text">{{thisDate}}</h4>
+              <h4 class="standard-text">{{temp}} °C</h4>
             </div>
           </div>
+          <div class="col-xs-6" id="box">
+            <img ng-src="img/{{clothes}}" class="box-child"></img>
           </div>
         </div>
+        <div class="row breakfast">
+          <div class="col-xs-6" id="box">
+            <h4 class="standard-text box-child">Leave at: </br></h4>
+            <h4 class="standard-text box-child"> {{hLeavetime}}:{{mLeavetime}} </h4>
+          </div>
+          <div class="col-xs-6" id="box">
+            <img ng-src="img/{{breakfast}}" class="box-child"></img>
+          </div>
+        </div>
+        <div class="row lunch">
+          <div class="col-xs-6" id="box">
+            <img src="img/lunchbox.png" class="box-child"></img>
+          </div>
+          <div class="col-xs-6" id="box">
+            <img ng-src="img/{{ifLunchbox()}}" class="box-child"></img>
+          </div>
+        </div>
+        <div class="row message">
+          <div class="col-xs-12" id="box">
+            <div id="messagebox" class="box-child">
+              <h4 class="box-child">{{ currentMessage }}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row date">
+          <div class="col-xs-12" id="box">
+            <h4 class="standard-text box-child">{{thisDate}}</h4>
+          </div>
+        </div>
+      </div>
+      <div id="future-view" ng-show="isFuture">
+        <div class="row future-box" id="future-weather">
+          <div class="div-xs-6 future-box-child">
+            <div id="raincloud" ng-show="cloud">
+              <span class='shadow'></span>
+            </div>
+            <div id="raincloud" ng-show="rain">
+              <span class='shadow'></span>
+              <div id="raindrop"></div>
+              <div id="raindrop2"></div>
+              <div id="raindrop3"></div>
+              <div id="raindrop4"></div>
+              <div id="raindrop5"></div>
+            </div>
+            <div id="sun" ng-show="sun">
+              <span class='shadow'></span>
+              <div id="sunray"></div>
+              <div id="sunray2"></div>
+              <div id="sunray3"></div>
+              <div id="sunray4"></div>
+              <div id="sunray5"></div>
+              <div id="sunray6"></div>
+              <div id="sunray7"></div>
+              <div id="sunray8"></div>
+              <div id="sunray9"></div>
+            </div>
+          </div>
+          <div class="div-xs-6 future-box-child">
+            <h4 class="standard-text-big">{{temp}} °C</h4>
+          </div>
+        </div>
+        <div class="row future-box">
+          <div class="div-xs-10 future-box-child">
+            <h4 class="standard-text">Perhaps you should wear a..</h4>
+            <img ng-src="img/{{clothes}}" class="future-box-child" id="future-clothes"></img>
+          </div>
+        </div>
+        <div class="row future-box">
+          <div class="col-xs-12 future-box-child">
+            <h4 class="standard-text">{{thisDate}}</h4>
+          </div>
+        </div>
+        <div class="row future-box">
+          <h4 class="standard-text">When do you need to leave for work?</h4>
+        </div>
+        <div class="row future-box-child">
+          <input class="hour" type="number" min="0" max="23" ng-model="hSetLeaveTime">
+          <input class="min" min="0" max="59" type="number" ng-model="mSetLeaveTime">
+          <button type="submit" ng-click="writeTime()">Set leave time</button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </div>
