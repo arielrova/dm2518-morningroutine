@@ -1,10 +1,14 @@
 morningRoutine.factory('backend', function() {
   var userID;
   var firebase = new Firebase("https://glaring-torch-8524.firebaseio.com/");
-  console.log(firebase);
 
+  /* This is very messy string handling, please look away! We know. There should've been loops and shit for this!
+
+  But the point is... In the end of these 60 lines we get todays, tomorrows and the day after tomorrow
+  as strings on the form of "20160101" which is used throughout as key for the data.
+  Additionally the SMHI-api needs another format of the date string, so thats taken care of too! */
   var today = new Date();
-  var lengthOfDay = 1000 * 60 * 60 * 24; // Milliseconds in a day
+  var lengthOfDay = 1000 * 60 * 60 * 24;
   var todayToString = today.toLocaleString();
   var APItoday = today.toISOString();
   var lol = APItoday.split("");
@@ -64,12 +68,15 @@ morningRoutine.factory('backend', function() {
   nextMonth = String(todayMonth);
   var nextDayString = nextYear + nextMonth + nextDay;
 
+  /* This is the userData-object which acts as fallback if there was no data loaded from Firebase.
+  If there is data from Firebase, of course this gets overwritten */
+
   var userData = {
     1: {
       lunchBox: false,
       umbrella: false,
       leaveTime: {
-        hour: 0,
+        hour: 8,
         minutes: 0
       }
     },
@@ -77,7 +84,7 @@ morningRoutine.factory('backend', function() {
       lunchBox: false,
       umbrella: false,
       leaveTime: {
-        hour: 0,
+        hour: 8,
         minutes: 0
       }
     },
@@ -85,22 +92,14 @@ morningRoutine.factory('backend', function() {
       lunchBox: false,
       umbrella: false,
       leaveTime: {
-        hour: 0,
+        hour: 8,
         minutes: 0
       }
     }
   };
 
-  var emptyDay = {
-    lunchBox: false,
-    umbrella: false,
-    leaveTime: {
-      hour: 0,
-      minutes: 0
-    }
-  };
-
-
+  /* writeTime is the function thats called when the user sets a new time they need to be leaving home.
+  It takes the userID and the days date as keys to put the data in the right place over at Firebase */
   var writeTime = function(date, user, minutes, hour) {
     firebase.child("users/" + user + "/days/" + date).set({
       leaveTime: {
@@ -110,6 +109,8 @@ morningRoutine.factory('backend', function() {
     });
   };
 
+  /* Same thing for the stuff you need to remember. So that if you close the app but did remember your lunchbox,
+  that will still show */
   var writeRemember = function(umbrella, lunchbox) {
     firebase.child("users/" + user + "/days/" + date).set({
       lunchbox: lunchbox,
@@ -117,6 +118,8 @@ morningRoutine.factory('backend', function() {
     });
   };
 
+  /* This is how the "frontend" gets user data. The objects in userData are mapped to a relative date, so whatever
+  todays date is, today will always be mapped to userData[1]. Tomorrow is always userData[2], etc. */
   var read = function(date) {
     retrieveData();
     if (date == todayString) {
@@ -128,30 +131,37 @@ morningRoutine.factory('backend', function() {
     }
   };
 
+  /* Returns user id */
   var getUserID = function() {
     return userID;
   };
 
+  /* Sets user id upon login */
   var setUserID = function(id) {
     userID = id;
   };
 
+  /* Returns the date string formatted for SMHI */
   var getAPIdate = function() {
     return hehe;
   };
 
+  /* Returns todays date string */
   var getDate = function() {
     return todayString;
   };
 
+  /* Tomorrows */
   var getTomorrow = function() {
     return tomorrowString;
   };
 
+  /* And the day after tomorrow. */
   var getDayAfterTomorrow = function() {
     return nextDayString;
   };
 
+  /* Blablabla, you get it... */
   var getAPITomorrow = function() {
     return fixedDate;
   };
@@ -160,10 +170,12 @@ morningRoutine.factory('backend', function() {
     return nextdayDate;
   };
 
+  /* This is backends read interface with Firebase. It uses the userID to identify the right subtree, 
+  then it loops all the days contained within. If the key matches any of the dates we are keeping track of,
+  the data is put into the userData object. A second iterator, k, keeps track so that the data is put into 
+  the right relative spot. */
   var retrieveData = function() {
-    console.log("hello, I'm retrieve!");
     firebase.child("users/" + userID + "/days").on("value", function(snapshot) {
-      console.log(snapshot);
       var days = snapshot.val();
       var k = 1;
       for (var j in days) {
@@ -173,13 +185,6 @@ morningRoutine.factory('backend', function() {
           userData[k].leaveTime.hour = days[j].leaveTime.hour;
           userData[k].leaveTime.minutes = days[j].leaveTime.minutes;
           k = k + 1;
-        } else {
-          userData[k].umbrella = false;
-          userData[k].lunchBox = false;
-          userData[k].leaveTime = {
-            hour: 8,
-            minutes: 0
-          };
         }
       }
     });
