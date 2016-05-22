@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-try:
-    import simplejson as json
-except:
-    import json
+
 from flask import Flask, Response, jsonify
 
 """
@@ -51,7 +48,7 @@ def setUpSensors():
     return sensors
 
 sensors = setUpSensors()
-app = Flask(__name__)
+app = Flask("SensorServer")
 
 @app.route("/")
 def index():
@@ -69,4 +66,4 @@ def lunchbox():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
