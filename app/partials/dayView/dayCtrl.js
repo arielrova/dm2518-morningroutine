@@ -2,21 +2,20 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.userParam = $routeParams.user;
   backend.setUserID($scope.userParam);
   $scope.user = backend.getUserID();
-  console.log($scope.user);
-  $scope.mSetLeaveTime = 0;
-  $scope.hSetLeaveTime = 8;
+  $scope.mSetLeaveTime = 00;
+  $scope.hSetLeaveTime = 08;
   $scope.mLeavetime = 0;
   $scope.hLeavetime = 8;
   $scope.isToday = true;
   $scope.isFuture = false;
-  $scope.SetLeaveTime = null;
-/*  $('#today-view').hide();
-  $('#loading').show();
+  $scope.SetLeaveTime = { value: new Date(1970, 0, 1, $scope.hSetLeaveTime, $scope.mSetLeaveTime) };
+  /*  $('#today-view').hide();
+    $('#loading').show();
 
-  $('.standard-text').bind('load', function() {
-    $('#loading').hide();
-    $('#content').fadeIn('slow');
-  });*/
+    $('.standard-text').bind('load', function() {
+      $('#loading').hide();
+      $('#content').fadeIn('slow');
+    });*/
 
   //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
@@ -31,11 +30,9 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           $http.get("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + lat + "/lon/" + lon + "/data.json")
             .then(function(response) {
               var timeseries = response.data.timeseries;
-              console.log("http://opendata-download-metfcst.smhi.se/api/category/pmp1.5g/version/1/geopoint/lat/" + lat + "/lon/" + lon + "/data.json");
               for (var i in timeseries) {
                 if (timeseries[i].validTime == date) {
                   $scope.temp = timeseries[i].t;
-                  console.log("TEMP" + $scope.temp);
                   if (timeseries[i].pit === 0 && timeseries[i].tcc > 2) {
                     $scope.rain = false;
                     $scope.sun = false;
@@ -86,6 +83,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
             $("#today").removeClass("active");
             $("#tomorrow").addClass("active");
             $("#nextday").removeClass("active");
+
           } else {}
         };
 
@@ -145,12 +143,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
         $scope.getBreakfast();
 
-        console.log($scope.mLeavetime);
-        console.log($scope.hLeavetime);
-
-
         $scope.userData = backend.read($scope.thisDate);
-        console.log($scope.userData);
         $scope.mLeavetime = String($scope.userData.leaveTime.minutes);
         if ($scope.mLeavetime.length == 1) {
           $scope.mLeavetime = $scope.mLeavetime + "0";
@@ -160,8 +153,6 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           $scope.hLeavetime = "0" + $scope.hLeavetime;
         }
 
-        console.log($scope.mLeavetime);
-        console.log($scope.hLeavetime);
         /* Hämtar userdata för dagens datum och det rätta användarIDt. Returnerar JSON-träd med:
 
         0. Boolean för matlåda. False om den inte är uttagen ur kylen, true om den är uttagen
@@ -207,20 +198,32 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
             $("#tomorrow").removeClass("active");
             $("#nextday").addClass("active");
           }
+          $scope.userData = backend.read($scope.thisDate);
+          $scope.readTime($scope.userData.leaveTime.hour, $scope.userData.leaveTime.minutes);
+        };
+
+        $scope.readTime = function(hour, minutes) {
+          console.log(hour);
+          console.log(minutes);
+          if (hour.length == 1) {
+            hour = 0 + $scope.hour;
+          }
+          if (minutes.length == 1) {
+            minutes = minutes + 0;
+          }
+          $scope.SetLeaveTime = { value: new Date(1970, 0, 1, hour, minutes) };
+
+
         };
 
         $scope.writeTime = function() {
           // Hämta ut minuter och timmar för att skicka till db
-
-          var hour = $scope.SetLeaveTime.getHours();
-          var minute = $scope.SetLeaveTime.getMinutes();
+          var hour = $scope.SetLeaveTime.value.getHours();
+          var minute = $scope.SetLeaveTime.value.getMinutes();
+          hour = parseInt(hour);
+          minute = parseInt(minute);
           backend.writeTime($scope.thisDate, $scope.user, minute, hour);
-
-          // $scope.hLeavetime = hour;
-          // $scope.mLeavetime = minute;
         };
-        // För att skriva till model/backend/data/firebase-pryl, använd backend.write().
-        // Säg till vilka fler parametrar ni vill kunna skriva!
 
         $scope.currentMessage = '';
 

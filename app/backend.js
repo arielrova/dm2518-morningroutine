@@ -118,6 +118,7 @@ morningRoutine.factory('backend', function() {
   };
 
   var read = function(date) {
+    retrieveData();
     if (date == todayString) {
       return userData[1];
     } else if (date == tomorrowString) {
