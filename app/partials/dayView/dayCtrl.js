@@ -10,7 +10,13 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.isToday = true;
   $scope.isFuture = false;
   $scope.SetLeaveTime = null;
+/*  $('#today-view').hide();
+  $('#loading').show();
 
+  $('.standard-text').bind('load', function() {
+    $('#loading').hide();
+    $('#content').fadeIn('slow');
+  });*/
 
   //AnvändarID, just nu alltid bara "1".
   backend.retrieveData();
@@ -63,11 +69,23 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         $scope.prevPage = function() {
           if ($scope.apiDate == backend.getAPITomorrow()) {
             $scope.apiDate = backend.getAPIdate();
+            $scope.isToday = true;
+            $scope.isFuture = false;
+            $("#today").addClass("active");
+            $("#tomorrow").removeClass("active");
+            $("#nextday").removeClass("active");
             $scope.getWeather($scope.apiDate);
+            $scope.thisDate = backend.getDate();
 
           } else if ($scope.apiDate == backend.getAPINextday()) {
             $scope.apiDate = backend.getAPITomorrow();
             $scope.getWeather($scope.apiDate);
+            $scope.isToday = false;
+            $scope.isFuture = true;
+            $scope.thisDate = backend.getTomorrow();
+            $("#today").removeClass("active");
+            $("#tomorrow").addClass("active");
+            $("#nextday").removeClass("active");
           } else {}
         };
 
@@ -75,10 +93,22 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           if ($scope.apiDate == backend.getAPIdate()) {
             $scope.apiDate = backend.getAPITomorrow();
             $scope.getWeather($scope.apiDate);
+            $scope.isToday = false;
+            $scope.isFuture = true;
+            $scope.thisDate = backend.getTomorrow();
+            $("#today").removeClass("active");
+            $("#tomorrow").addClass("active");
+            $("#nextday").removeClass("active");
 
           } else if ($scope.apiDate == backend.getAPITomorrow()) {
             $scope.apiDate = backend.getAPINextday();
             $scope.getWeather($scope.apiDate);
+            $scope.isToday = false;
+            $scope.isFuture = true;
+            $scope.thisDate = backend.getDayAfterTomorrow();
+            $("#today").removeClass("active");
+            $("#tomorrow").removeClass("active");
+            $("#nextday").addClass("active");
           }
         };
 
@@ -149,9 +179,13 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           if (event.currentTarget.id == "tomorrow") {
             $scope.apiDate = backend.getAPITomorrow();
             $scope.getWeather($scope.apiDate);
+            //event.currentTarget.id.addClass("active");
             $scope.isToday = false;
             $scope.isFuture = true;
             $scope.thisDate = backend.getTomorrow();
+            $("#today").removeClass("active");
+            $("#tomorrow").addClass("active");
+            $("#nextday").removeClass("active");
 
           } else if (event.currentTarget.id == "today") {
             $scope.apiDate = backend.getAPIdate();
@@ -159,6 +193,9 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
             $scope.isToday = true;
             $scope.isFuture = false;
             $scope.thisDate = backend.getDate();
+            $("#today").addClass("active");
+            $("#tomorrow").removeClass("active");
+            $("#nextday").removeClass("active");
 
           } else {
             $scope.apiDate = backend.getAPINextday();
@@ -166,6 +203,9 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
             $scope.isToday = false;
             $scope.isFuture = true;
             $scope.thisDate = backend.getDayAfterTomorrow();
+            $("#today").removeClass("active");
+            $("#tomorrow").removeClass("active");
+            $("#nextday").addClass("active");
           }
         };
 
