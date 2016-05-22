@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import random
 from flask import Flask, Response, jsonify
 
 """
@@ -39,7 +39,10 @@ class Sensor(object):
     
     def status(self):
         #Checks the pin and returns if it's activated or not
-        return True
+        if random.randint(0,1) > 0:  
+            return True
+        else:
+            return False
 
 def setUpSensors():
     sensors = []
