@@ -4,9 +4,9 @@ import random
 from flask import Flask, jsonify
 
 """
-This server sends out a datastream in json format contaning information from our
+This server sends out a datastream in json format containing information from our
 sensors, so it has to three tasks:
-    1. Retrive data from arduino/sensors
+    1. Retrieve data from arduino/sensors
     2. Package it up
     3. Send data for webapp to pickup
 
