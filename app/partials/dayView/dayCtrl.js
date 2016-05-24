@@ -6,8 +6,10 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.hSetLeaveTime = 08;
   $scope.mLeavetime = 0;
   $scope.hLeavetime = 8;
-  $scope.isToday = true;
+  $scope.isToday = false;
   $scope.isFuture = false;
+  $scope.loading = true;
+  $scope.start = true;
   $scope.SetLeaveTime = { value: new Date(1970, 0, 1, $scope.hSetLeaveTime, $scope.mSetLeaveTime) };
   /*  $('#today-view').hide();
     $('#loading').show();
@@ -39,27 +41,44 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
                     $scope.cloud = true;
                     $scope.currentMessage = "Clouds everywhere. Eat them!";
                     $scope.clothes = 'clothes2.png';
+                    $("#temp").removeClass("temperature");
+
                   } else if (timeseries[i].pit === 0 && timeseries[i].tcc < 2) {
                     $scope.rain = false;
                     $scope.sun = true;
                     $scope.cloud = false;
                     $scope.currentMessage = "Don't forget your sunglasses!";
                     $scope.clothes = 'clothes1.png';
+                    $("#temp").addClass("temperature");
+
                   } else {
                     $scope.currentMessage = "Don't forget your umbrellaELLA.";
                     $scope.rain = true;
                     $scope.sun = false;
                     $scope.cloud = false;
                     $scope.clothes = 'clothes3.png';
+                    $("#temp").removeClass("temperature");
                   }
                 }
               }
             });
 
+          $scope.loading = false;   
+
+          if ($scope.start == true) {
+            $scope.isToday = true;
+            $scope.start = false;
+          }
+    
+          if ($scope.isToday == true) {
+          $('#sun').addClass("small-sun");
+          } else {
+          $('#sun').removeClass("small-sun");
+          }
         };
 
-
         $scope.apiDate = backend.getAPIdate();
+        console.log($scope.apiDate)
 
         $scope.getWeather($scope.apiDate);
 
@@ -113,6 +132,12 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         $scope.thisDate = backend.getDate();
         //Dagens datum, just nu är idag alltid "20160507" men mer sofistikerad datumhantering följer
 
+          if ($scope.isToday == true) {
+          $('#sun').addClass("small-sun");
+          } else {
+          $('#sun').removeClass("small-sun");
+          }
+
         $scope.getBreakfast = function() {
           // Hämtar den aktuella tiden för att sedan jämföra med den av användaren
           // givna tiden för att gå hemifrån. Uppdateras med ng-change när användaren 
@@ -124,9 +149,6 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           currentCalc = currentHour * 60 + currentMinute;
 
           leaveCalc = $scope.hLeavetime * 60 + $scope.mLeavetime;
-
-          // Sätter nuvarande tid till kl 7:45 för att kunna testa
-          currentCalc = 600;
 
           diff = leaveCalc - currentCalc;
 
@@ -202,6 +224,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           $scope.readTime($scope.userData.leaveTime.hour, $scope.userData.leaveTime.minutes);
         };
 
+
         $scope.readTime = function(hour, minutes) {
           console.log(hour);
           console.log(minutes);
@@ -231,10 +254,6 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
         $scope.clothes = 'clothes1.png';
 
-        $scope.leavingTime = function() {
-          // Skicka ut tiden när användaren ska åka hemifrån
-          return "8:00 AM";
-        };
 
         $scope.ifLunchbox = function() {
           var lunch = false;

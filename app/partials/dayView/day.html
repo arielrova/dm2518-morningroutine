@@ -11,6 +11,7 @@
         <a id="tomorrow" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Tomorrow</a>
         <a id="nextday" data-ng-click="changeDay($event)" href="#day/{{user}}/{{thisDate}}">Next day</a>
       </div>
+      <div class="spinner" ng-show="loading"></div>
       <div id="today-view" ng-show="isToday">
         <div class="row weather">
           <div class="col-xs-6" id="box">
@@ -38,7 +39,7 @@
                 <div id="sunray8"></div>
                 <div id="sunray9"></div>
               </div>
-              <h4 class="standard-text">{{temp}} °C</h4>
+              <h4 id="temp" class="standard-text">{{temp}} °C</h4>
             </div>
           </div>
           <div class="col-xs-6" id="box">

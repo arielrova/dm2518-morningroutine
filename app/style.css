@@ -37,6 +37,8 @@ header {
     background: -o-linear-gradient(#039BE5, #B3E5FC); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#039BE5, #B3E5FC); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#039BE5, #B3E5FC); /* Standard syntax */
+    height: 100vh;
+    width: 100vw;
 
 }
 
@@ -79,6 +81,9 @@ header {
     color: white;
     padding: 0;
     margin: 0;
+    position:relative;
+    z-index: 9999;
+
 }
 .title-text {
     font-family: Roboto;
@@ -138,6 +143,7 @@ header {
 
 .date {
     background-color: #B3E5FC;
+    height: 200px;
 }
 
 #future-clothes {
@@ -713,4 +719,69 @@ header h3 {
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes sunpulse-today {
+    0% {
+        -webkit-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    50% {
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        transform: scale(0.6);
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+}
+
+
+.small-sun {
+    animation: sunpulse-today 2s!important; 
+    z-index: 8888!important;
+    animation-iteration-count:infinite!important;
+    animation-delay: 0.25s!important;
+}
+
+#temperature {
+    margin-top: 10px;
 }
