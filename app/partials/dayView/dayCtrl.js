@@ -256,7 +256,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
 
 
         $scope.ifLunchbox = function() {
-          var lunch = false;
+          var lunch = $scope.userdata.lunchbox;
           if (lunch === true) {
             return 'bag.png';
           } else if (lunch === false) {
@@ -264,6 +264,22 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
           }
         };
 
+        $scope.getLunchbox = function() {
+          //Check server
+          $http.get("server/lunchbox") //Replace server with your local sensor server for it to pick up data
+            .then(function(response) {
+              //succesive callback
+              var lunch = response.status; 
+              backend.writeRemember(false, lunch);
+              ifLunchbox();
+            },function () {
+              // error callback
+              backend.writeRemember(false, false);
+              ifLunchbox()
+            })
+        }
+
+        var lunchUpdate = setInterval(getLunchbox,5000);
 
       });
     });
