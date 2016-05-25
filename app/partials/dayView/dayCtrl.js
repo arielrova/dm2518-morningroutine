@@ -11,16 +11,35 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
   $scope.loading = true;
   $scope.start = true;
   $scope.SetLeaveTime = { value: new Date(1970, 0, 1, $scope.hSetLeaveTime, $scope.mSetLeaveTime) };
-  /*  $('#today-view').hide();
-    $('#loading').show();
-
-    $('.standard-text').bind('load', function() {
-      $('#loading').hide();
-      $('#content').fadeIn('slow');
-    });*/
-
-  //AnvändarID, just nu alltid bara "1".
+  
   backend.retrieveData();
+
+  $scope.ifLunchbox = function(lunch) {
+    var lunch = lunch;
+    console.log(lunch)
+    if (lunch === true) {
+      $scope.lunchPlace = 'bag.png';
+    } else if (lunch === false) {
+      $scope.lunchPlace = 'fridge.png';
+    }
+  };
+
+  $scope.getLunchbox = function() {
+    //Check server
+    $http.get("server/lunchbox") //Replace server with your local sensor server for it to pick up data
+      .then(function(response) {
+        //succesive callback
+        var lunch = response.status; 
+        console.log(lunch)
+        backend.writeRemember(lunch);
+        $scope.ifLunchbox(lunch);
+      },function errorCallback(response) {
+        // error callback
+        console.log('error')
+        // backend.writeRemember(false);
+        $scope.ifLunchbox(false)
+      })
+  }
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -63,6 +82,7 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
               }
             });
 
+          $scope.ifLunchbox(false)
           $scope.loading = false;   
 
           if ($scope.start == true) {
@@ -255,31 +275,8 @@ morningRoutine.controller("dayCtrl", function($scope, $routeParams, backend, $ht
         $scope.clothes = 'clothes1.png';
 
 
-        $scope.ifLunchbox = function() {
-          var lunch = $scope.userdata.lunchbox;
-          if (lunch === true) {
-            return 'bag.png';
-          } else if (lunch === false) {
-            return 'fridge.png';
-          }
-        };
 
-        $scope.getLunchbox = function() {
-          //Check server
-          $http.get("server/lunchbox") //Replace server with your local sensor server for it to pick up data
-            .then(function(response) {
-              //succesive callback
-              var lunch = response.status; 
-              backend.writeRemember(false, lunch);
-              ifLunchbox();
-            },function () {
-              // error callback
-              backend.writeRemember(false, false);
-              ifLunchbox()
-            })
-        }
-
-        var lunchUpdate = setInterval(getLunchbox,5000);
+        setInterval($scope.getLunchbox,5000);
 
       });
     });

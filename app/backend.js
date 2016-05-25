@@ -111,10 +111,9 @@ morningRoutine.factory('backend', function() {
 
   /* Same thing for the stuff you need to remember. So that if you close the app but did remember your lunchbox,
   that will still show */
-  var writeRemember = function(umbrella, lunchbox) {
+  var writeRemember = function(lunchbox) {
     firebase.child("users/" + user + "/days/" + date).set({
       lunchbox: lunchbox,
-      umbrella: umbrella
     });
   };
 
